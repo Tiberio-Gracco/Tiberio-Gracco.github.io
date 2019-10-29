@@ -1,1 +1,44 @@
-oi
+var x = 0, y = 0, estado, velocidade = 3;
+
+function setup() {
+  createCanvas(650, 400);
+  
+  
+}
+
+function draw() {
+  background("white");
+  
+  if (keyIsPressed == true)
+    estado = key;
+  else
+    estado = 0;
+ 
+  switch (estado){
+    case 'ArrowUp':
+      y -= velocidade;
+      break;
+      
+    case 'ArrowDown':
+      y += velocidade;
+      break;
+    
+    case 'ArrowRight':
+      x += velocidade;
+      break;
+      
+    case 'ArrowLeft':
+      x -= velocidade;
+      break;
+      
+    default:
+      text ("Parado", x - 20, y - 30);
+      break;
+  }
+  
+  
+  ellipse(x, y, 50, 50);
+  
+  
+  
+}
