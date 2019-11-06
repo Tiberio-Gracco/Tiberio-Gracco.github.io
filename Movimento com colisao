@@ -1,0 +1,62 @@
+var x = 0, y = 0, estado, velocidade = 7;
+var x1 = 100, y1 = 100;
+
+var tam1 = 50; // Tamanho da elipse
+var tam2 = 100; // Tamanho do quadrado
+
+
+function setup() {
+  createCanvas(650, 400);
+
+  
+}
+function draw() {
+  background("White");
+  
+  rect (x1, y1, tam2, tam2);
+  
+  if (keyIsPressed == true)
+    estado = key;
+  else
+    estado = 0;
+    
+    
+  switch (estado){
+    case 'ArrowUp':
+      if (colisao (x, y - velocidade , x1, y1) == false)
+        y -= velocidade;
+      break;
+      
+    case 'ArrowDown':
+      if (colisao (x, y + velocidade , x1, y1) == false)
+        y += velocidade;
+      break;
+    
+    case 'ArrowRight':
+      x += velocidade;
+      break;
+      
+    case 'ArrowLeft':
+      x -= velocidade;
+      break;
+  }
+    
+  
+  rect(x, y, 50, 50);
+}
+
+
+function colisao(xa, ya, xb, yb){
+  if (xa + 25 < xb) //A está a esquerda de B
+    return false;
+  if (xb < xa - 100) //A está a direita de B
+    return false;
+  if (ya - 97 > yb) //A está embaixo de B
+    return false;
+  if (ya + 50 < yb) //A está acima de B
+    return false;
+  
+  return true; //Se ele não entrar em nenhuma dessas 4 situações,
+               //então ele está colidindo
+}
+
