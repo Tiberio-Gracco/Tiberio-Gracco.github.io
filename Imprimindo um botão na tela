@@ -1,4 +1,5 @@
 //Imprimindo botão na tela
+//Com essa técnica, podem ser criados quantos botões quiser
 
 //Dados do Botão
 var xBot = 300, yBot = 350;
