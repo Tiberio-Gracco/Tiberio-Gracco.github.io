@@ -22,16 +22,14 @@ function draw() {
 }
 
 
+//O Botão funciona com essas duas funções
 function mouseClicked(){
   if (colisao(xBot, yBot, compBot, altBot, mouseX, mouseY, 1, 1) == true){//Executa a função do botao
     cor = random (0, 255);
   }
   else{ //Executa outra coisa caso não clique no botão
   }
-  
-  
 }
-  
 
 function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
   //Colisão entre dois objetos A e B.
