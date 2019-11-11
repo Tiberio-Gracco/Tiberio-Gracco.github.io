@@ -1,7 +1,8 @@
 //Imprimindo botão na tela
-var xRec = 100, yRec = 100;
-var compRec = 100, altRec = 50;
-var teste = 0;
+
+//Dados do Botão
+var xBot = 300, yBot = 350;
+var compBot = 100, altBot = 50;
 
 var cor = 255;
 
@@ -13,15 +14,15 @@ function draw() {
   background(cor);
   
   fill ("black");
-  rect (100, 100, 100, 50, 10);
+  rect (xBot, yBot, compBot, altBot, 10);
   fill ("red");
-  text ("Mudar a cor", 115 ,130);
+  text ("Mudar a cor", xBot + 15 , yBot + 30);
   
 }
 
 
 function mouseClicked(){
-  if (colisao(xRec, yRec, compRec, altRec, mouseX, mouseY) == true){//Executa a função do botao
+  if (colisao(xBot, yBot, compBot, altBot, mouseX, mouseY, 1, 1) == true){//Executa a função do botao
     cor = random (0, 255);
   }
   else{ //Executa outra coisa caso não clique no botão
@@ -30,21 +31,20 @@ function mouseClicked(){
   
 }
   
+
+function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
+  //Colisão entre dois objetos A e B.
+  //Entrar com as coordenadas (x e y) bem como o comprimento e altura de ambos.
   
-  
-  
-  
-function colisao(xA, yA, compA, altA, xb, yb){
-  if (xA + compA < xb) //A está a esquerda de B
+  if (xA + compA < xB) //A está a esquerda de B
     return false;
-  if (xb < xA) //A está a direita de B
+  if (xB < xA - compB) //A está a direita de B
     return false;
-  if (yA > yb) //A está embaixo de B
+  if (yA - altB > yB) //A está embaixo de B
     return false;
-  if (yA + altA < yb) //A está acima de B
+  if (yA + altA < yB) //A está acima de B
     return false;
   
   return true; //Se ele não entrar em nenhuma dessas 4 situações,
                //então ele está colidindo
 }
-  
