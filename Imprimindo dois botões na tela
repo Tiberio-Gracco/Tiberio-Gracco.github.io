@@ -1,0 +1,64 @@
+//Imprimindo botão na tela
+
+//Dados do Botão 1
+var xBot = 50, yBot = 100;
+var compBot = 100, altBot = 50;
+
+//Dados do Botão 2
+var xBot2 = 200, yBot2 = 100;
+var compBot2 = 150, altBot2 = 50;
+
+var cor = 255, corB1 = 0;
+
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(cor);
+  
+  //Botão 1
+  fill (corB1);
+  rect (xBot, yBot, compBot, altBot, 10);
+  fill ("red");
+  text ("Mudar a cor", xBot + 15 , yBot + 30);
+  
+  //Botão 2
+  fill ("black");
+  rect (xBot2, yBot2, compBot2, altBot2, 10);
+  fill ("green");
+  text ("Mudar a cor do 1° Botão", xBot2 + 10 , yBot2 + 30);
+  
+}
+
+
+function mouseClicked(){
+  //Botão 1
+  if (colisao(xBot, yBot, compBot, altBot, mouseX, mouseY, 1, 1) == true){
+    cor = random (0, 255);
+  }
+  
+  //Botão 2
+  if (colisao(xBot2, yBot2, compBot2, altBot2, mouseX, mouseY, 1, 1) == true){
+    corB1 = random (0, 255);
+  }
+}
+  
+function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
+  //Colisão entre dois objetos A e B.
+  //Entrar com as coordenadas (x e y) bem como o comprimento e altura de ambos.
+  
+  if (xA + compA < xB) //A está a esquerda de B
+    return false;
+  if (xB < xA - compB) //A está a direita de B
+    return false;
+  if (yA - altB > yB) //A está embaixo de B
+    return false;
+  if (yA + altA < yB) //A está acima de B
+    return false;
+  
+  return true; //Se ele não entrar em nenhuma dessas 4 situações,
+               //então ele está colidindo
+}
+  
