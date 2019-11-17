@@ -1,14 +1,23 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="js/p5.min.js"></script>
+  <script>
+
 //Dados do Botão 1 (INICIAR)
 var xBot =  100, yBot = 100;
-var compBot = 300, altBot = 70;
+var compBot = 449, altBot = 95;
+var B1;
 
 //Dados do Botão 2 (CONFIGURAÇÕES)
 var xBot2 = 100, yBot2 = 200;
-var compBot2 = 300, altBot2 = 70;
+var compBot2 = 449, altBot2 = 95;
+var B2;
 
 //Dados do Botão 3 (SAIR)
 var xBot3 = 100, yBot3 = 300;
-var compBot3 = 300, altBot3 = 70;
+var compBot3 = 449, altBot3 = 95;
+var B3;
 
 //Dados do Botão 4 (VOLTAR P/ O MENU)
 var xBot4 =  350, yBot4 = 400;
@@ -23,7 +32,16 @@ var xBot6 =  275, yBot6 = 250;
 var compBot6 = 100, altBot6 = 50;
 
 
+
+
+
 var telas = [];
+
+function preLoad(){
+  B1 = loadImage('Imagens/Botão - Novo Jogo.png');
+  B2 = loadImage('Imagens/Botão - Configurações.png');
+  B3 = loadImage('Imagens/Botão - Sair.png');
+}
 
 
 function setup() {
@@ -36,26 +54,17 @@ function setup() {
 function telaInicial(){
   telas[0] = true;
   background('white');
-  textFont ("TimesNewRoman",25);
   
   //Botão 1
-  fill ("black");
-  rect (xBot, yBot, compBot, altBot, 10);
-  fill ("white");
-  text ("Iniciar", xBot + 120 , yBot + 40);
+  image(B1, xBot, yBot, compBot, altBot);
   
   //Botão 2
-  fill ("black");
-  rect (xBot2, yBot2, compBot2, altBot2, 10);
-  fill ("white");
-  text ("Configurações", xBot2 + 80 , yBot2 + 40);
+  image(B2, xBot2, yBot2, compBot2, altBot2);
   
   //Botão 3
-  fill ("black");
-  rect (xBot3, yBot3, compBot3, altBot3, 10);
-  fill ("red");
-  text ("Sair do jogo", xBot3 + 90 , yBot3 + 40);
+  image(B3, xBot3, yBot3, compBot3, altBot3);
 }
+
 
 function mouseClicked(){
   if (telas[0] == true){ //Está na tela inicial
@@ -194,3 +203,14 @@ function telaPreta(){//SAIR
   text ("Não", xBot6 + 30 , yBot6 + 35);
   
 }
+
+
+</script>
+
+  <style> body {padding: 0; margin: 0;} </style>
+</head>
+
+<body>
+</body>
+</html>
+
