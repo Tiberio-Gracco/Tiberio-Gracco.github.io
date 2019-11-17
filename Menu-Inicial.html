@@ -37,7 +37,7 @@ var compBot6 = 100, altBot6 = 50;
 
 var telas = [];
 
-function preLoad(){
+function preload(){ 
   B1 = loadImage('Imagens/Botão - Novo Jogo.png');
   B2 = loadImage('Imagens/Botão - Configurações.png');
   B3 = loadImage('Imagens/Botão - Sair.png');
@@ -53,7 +53,7 @@ function setup() {
 function telaInicial(){
   alert ("Tela Inicial...");
   telas[0] = true;
-  background('gray');
+  background("Black");
   
   //Botão 1
   image(B1, xBot, yBot, compBot, altBot);
