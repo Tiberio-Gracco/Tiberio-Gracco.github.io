@@ -88,11 +88,10 @@ function mouseClicked(){
       telas[0] = false;
       telaPreta();
     }
-   
   }
   
   
-  if (telas[1] == true){//Está na tela do começo do jogo
+  if (telas[1] == true){//Está na tela da primeira fase
     
     //Botão 4
     if (colisao(xBot4, yBot4, compBot4, altBot4, mouseX, mouseY, 1, 1) == true){
@@ -167,6 +166,7 @@ function PrimeiraFase(){
   text ("Voltar", xBot4 + 30 , yBot4 + 30);
 }
 
+    
 function Configuracoes(){//CONFIGURAÇÕES
   background ("blue");
   
@@ -177,9 +177,9 @@ function Configuracoes(){//CONFIGURAÇÕES
   textFont ("TimesNewRoman",15);
   text ("Voltar", xBot4 + 30 , yBot4 + 30);
   
-  
 }
 
+    
 function telaPreta(){//SAIR
   background ("white");
   fill ("gray");
