@@ -7,17 +7,20 @@
 //Dados do Botão 1 (INICIAR)
 var xBot =  458, yBot = 200;
 var compBot = 449, altBot = 95;
-var B1, b1P;
+var B1;
+var press1;
 
 //Dados do Botão 2 (CONFIGURAÇÕES)
 var xBot2 = 458, yBot2 = 300;
 var compBot2 = 449, altBot2 = 95;
-var B2, b2P;
+var B2;
+var press2;
 
 //Dados do Botão 3 (SAIR)
 var xBot3 = 458, yBot3 = 400;
 var compBot3 = 449, altBot3 = 95;
-var B3, b3P;
+var B3;
+var press3;
 
 //Dados do Botão 4 (VOLTAR P/ O MENU)
 var xBot4 =  350, yBot4 = 400;
@@ -38,13 +41,13 @@ var telas = [];
     
 function preload(){ 
   B1 = loadImage('Imagens/Botão - Novo Jogo.png');
-  b1P = loadImage ('Imagens/Botão - Novo Jogo(P).png');
+  press1 = loadImage ('Imagens/Botão - Novo Jogo(P).png');
   
   B2 = loadImage('Imagens/Botão - Configurações.png');
-  b2P = loadImage ('Imagens/Botão - Configurações(P).png');
+  press2 = loadImage ('Imagens/Botão - Configurações(P).png');
 
   B3 = loadImage('Imagens/Botão - Sair.png');
-  b3P = loadImage('Imagens/Botão - Sair(P).png');
+  press3 = loadImage('Imagens/Botão - Sair(P).png');
 }
 
 
@@ -59,19 +62,19 @@ function telaInicial(){
   background("White");
   
   //Botão 1
-  if (xBot, yBot, compBot, altBot, mouseX, mouseY, 1, 1){
+  if (colisao (xBot, yBot, compBot, altBot, mouseX, mouseY, 1, 1) == true){
     image (b1P, xBot, yBot, compBot, altBot);
   else
     image(B1, xBot, yBot, compBot, altBot);
   
   //Botão 2
-   if (xBot2, yBot2, compBot2, altBot2, mouseX, mouseY, 1, 1){
+   if (colisao (xBot2, yBot2, compBot2, altBot2, mouseX, mouseY, 1, 1) == true){
     image (b2P, xBot2, yBot2, compBot2, altBot2);
   else
     image(B2, xBot2, yBot2, compBot2, altBot2);
   
   //Botão 3
-  if (xBot3, yBot3, compBot3, altBot3, mouseX, mouseY, 1, 1){
+  if (colisao (xBot3, yBot3, compBot3, altBot3, mouseX, mouseY, 1, 1) == true){
     image (b3P, xBot3, yBot3, compBot3, altBot3);
   else
     image(B3, xBot3, yBot3, compBot3, altBot3);
