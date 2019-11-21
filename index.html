@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <script src="js/p5.min.js"></script>
   <script>
-    var x = 0, y = 0, estado, velocidade = 3;
+    var x = 0, y = 0, estado, passos = 3;
     var posicao = 0, cont = 0, delay = 5;
     //var x2 = 0, y2 = 0, posicao2 = 0, cont2 = 0;
     
@@ -83,32 +83,32 @@ function draw() {
       
     switch (estado){ //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
-        if (colisao(x, y, 32, 77, x2, y2, 32, 77) == false){
-          y -= velocidade;
+        if (colisao(x, y - passos, 32, 77, x2, y2, 32, 77) == false){
+          y -= passos;
           background ("white");
           image (Jog_Tras[posicao], x, y);
         }
         break;
       
       case 'ArrowDown':
-        if (colisao(x, y, 32, 77, x2, y2, 32, 77) == false){
-          y += velocidade;
+        if (colisao(x, y + passos, 32, 77, x2, y2, 32, 77) == false){
+          y += passos;
           background ("white");
           image (Jog_Frente[posicao], x, y);
         }
         break;
     
       case 'ArrowRight':
-        if (colisao(x, y, 32, 77, x2, y2, 32, 77) == false){
-          x += velocidade;
+        if (colisao(x + passos, y, 32, 77, x2, y2, 32, 77) == false){
+          x += passos;
           background ("white");
           image (Jog_Direita[posicao], x, y);
         }  
         break;
       
       case 'ArrowLeft':
-        if (colisao(x, y, 32, 77, x2, y2, 32, 77) == false){
-          x -= velocidade;
+        if (colisao(x - passos, y, 32, 77, x2, y2, 32, 77) == false){
+          x -= passos;
           background ("white");
           image (Jog_Esquerda[posicao], x, y);
         }
