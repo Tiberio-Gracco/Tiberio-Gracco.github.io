@@ -4,17 +4,24 @@
   <script src="js/p5.min.js"></script>
   <script>
     var x = 0, y = 0, estado, velocidade = 3;
-    var posicao = 0, tempoPos = 0, velocAnim = 5;
+    var posicao = 0, cont = 0, delay = 5;
+    var posicao2 = 0, cont2 = 0;
     
     var Jog_Frente = [];
     var Jog_Direita = [];
     var Jog_Esquerda = [];
     var Jog_Tras = [];
+    
+    var Ind_Frente = [];
+    var Ind_Direita = [];
+    var Ind_Esquerda = [];
+    var Ind_Tras = [];
 
     
 function preload(){
   //Salva as img de movimentação dos persongagens
   
+  //JOGADOR
   Jog_Frente[0] = loadImage("Imagens/Jogador - Frente0.png");
   Jog_Frente[1] = loadImage("Imagens/Jogador - Frente1.png");
   Jog_Frente[2] = loadImage("Imagens/Jogador - Frente2.png");
@@ -34,20 +41,45 @@ function preload(){
   Jog_Tras[1] = loadImage("Imagens/Jogador - Trás1.png");
   Jog_Tras[2] = loadImage("Imagens/Jogador - Trás2.png");
   Jog_Tras[3] = loadImage("Imagens/Jogador - Trás3.png");
+  
+  
+  
+  //ÍNDIO
+  Ind_Frente[0] = loadImage("Imagens/Índio - Frente0.png");
+  Ind_Frente[1] = loadImage("Imagens/Índio - Frente1.png");
+  Ind_Frente[2] = loadImage("Imagens/Índio - Frente2.png");
+  Ind_Frente[3] = loadImage("Imagens/Índio - Frente3.png");
+    
+  Ind_Direita[0] = loadImage("Imagens/Índio - Direita0.png");
+  Ind_Direita[1] = loadImage("Imagens/Índio - Direita1.png");
+  Ind_Direita[2] = loadImage("Imagens/Índio - Direita2.png");
+  Ind_Direita[3] = loadImage("Imagens/Índio - Direita3.png");
+  
+  Ind_Esquerda[0] = loadImage("Imagens/Índio - Esquerda0.png");
+  Ind_Esquerda[1] = loadImage("Imagens/Índio - Esquerda1.png");
+  Ind_Esquerda[2] = loadImage("Imagens/Índio - Esquerda2.png");
+  Ind_Esquerda[3] = loadImage("Imagens/Índio - Esquerda3.png");
+  
+  Ind_Tras[0] = loadImage("Imagens/Índio - Trás0.png");
+  Ind_Tras[1] = loadImage("Imagens/Índio - Trás1.png");
+  Ind_Tras[2] = loadImage("Imagens/Índio - Trás2.png");
+  Ind_Tras[3] = loadImage("Imagens/Índio - Trás3.png");
+  
 }
     
 function setup() {
-  createCanvas(650, 400);
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
- if (keyIsPressed == true)
+    if (keyIsPressed == true)
       estado = key;
     else
       estado = 0;
   
- 
+  
     switch (estado){
+      //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
         y -= velocidade;
         background("white");
@@ -71,22 +103,57 @@ function draw() {
         background("white");
         image (Jog_Esquerda[posicao], x, y);
         break;
+        
+     
+      //MOVIMENTO DO INDIO
+      case 'w':
+        y -= velocidade;
+        background("white");
+        image (Ind_Tras[posicao2], x, y);
+        break;
+      
+      case 's':
+        y += velocidade;
+        background("white");
+        image (Ind_Frente[posicao2], x, y);
+        break;
+    
+      case 'd':
+        x += velocidade;
+        background("white");
+        image (Ind_Direita[posicao2], x, y);
+        break;
+      
+      case 'a':
+        x -= velocidade;
+        background("white");
+        image (Ind_Esquerda[posicao2], x, y);
+        break;
+        
     }
   
     if (keyIsPressed == true){ //Efeito de Delay na animação da sprite
-      if (tempoPos == velocAnim){
+      if (cont == delay){ // JOGADOR
         posicao++;
-        tempoPos = 0;
+        cont = 0;
       }
       else
-        tempoPos++;
+        cont++;
+      
+      if (cont2 == delay){ //INDIO
+        posicao2++;
+        cont2 = 0;
+      }
+      else
+        cont2++;
+      
     }
    
     if (posicao > 3)
       posicao = 0;
   
-  
-  
+    if (posicao2 > 3)
+      posicao2 = 0;
 }
 
   </script>
