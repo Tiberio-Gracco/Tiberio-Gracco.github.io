@@ -72,11 +72,11 @@ function preload(){
     
 function setup() {
   createCanvas(windowWidth, windowHeight);
-//  image (Jog_Frente[0], 0, 0);
+  aux = Jog_Frente[0];
 }
 
 function draw() {
-    background ("black");
+    background ("white");
 
     if(keyIsPressed == true)
       estado = key;
@@ -111,10 +111,6 @@ function draw() {
           x -= passos;
           aux = Jog_Esquerda[posicao];
         }
-        break;
-        
-      default:
-        background ("green");
         break;
     }
    
