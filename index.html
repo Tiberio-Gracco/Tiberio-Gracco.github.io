@@ -4,7 +4,7 @@
   <script src="js/p5.min.js"></script>
   <script>
     var x = 0, y = 0, estado, velocidade = 3;
-    var avatar;
+    
     var jogador = [4];
     var indio = [4];
 
@@ -87,25 +87,25 @@ function draw() {
     switch (estado){
       case 'ArrowUp':
         y -= velocidade;
-        background(chao);
+        background("white");
         image (jogador[3][posicao], x, y);
         break;
       
       case 'ArrowDown':
         y += velocidade;
-        background(chao);
+        background("white");
         image (jogador[0][posicao], x, y);
         break;
     
       case 'ArrowRight':
         x += velocidade;
-        background(chao);
+        background("white");
         image (jogador[2][posicao], x, y);
         break;
       
       case 'ArrowLeft':
         x -= velocidade;
-        background(chao);
+        background("white");
         image (jogador[1][posicao], x, y);
         break;
     }
