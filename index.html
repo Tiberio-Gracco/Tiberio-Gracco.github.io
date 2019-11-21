@@ -82,25 +82,21 @@ function draw() {
       //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
         y -= velocidade;
-        background("white");
         image (Jog_Tras[posicao], x, y);
         break;
       
       case 'ArrowDown':
         y += velocidade;
-        background("white");
         image (Jog_Frente[posicao], x, y);
         break;
     
       case 'ArrowRight':
         x += velocidade;
-        background("white");
         image (Jog_Direita[posicao], x, y);
         break;
       
       case 'ArrowLeft':
         x -= velocidade;
-        background("white");
         image (Jog_Esquerda[posicao], x, y);
         break;
         
@@ -108,25 +104,21 @@ function draw() {
       //MOVIMENTO DO INDIO
       case 'w':
         y2 -= velocidade;
-        background("white");
         image (Ind_Tras[posicao2], x2, y2);
         break;
       
       case 's':
         y2 += velocidade;
-        background("white");
         image (Ind_Frente[posicao2], x2, y2);
         break;
     
       case 'd':
         x2 += velocidade;
-        background("white");
         image (Ind_Direita[posicao2], x2, y2);
         break;
       
       case 'a':
         x2 -= velocidade;
-        background("white");
         image (Ind_Esquerda[posicao2], x2, y2);
         break;
         
