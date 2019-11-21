@@ -7,6 +7,8 @@
     var posicao = 0, cont = 0, delay = 5;
     var x2 = 0, y2 = 0, posicao2 = 0, cont2 = 0;
     
+    var ultima_posicao = 0, ultima_posicao2 = 0;
+    
     var Jog_Frente = [];
     var Jog_Direita = [];
     var Jog_Esquerda = [];
@@ -72,14 +74,23 @@ function setup() {
 }
 
 function draw() {
+  
+    background ("white");
     if (keyIsPressed == true)
       estado = key;
     else
       estado = 0;
   
   
-    switch (estado){
-      //MOVIMENTO DO JOGADOR
+    if (estado == 'ArrowUp' || estado == 'ArrowDown' || estado == 'ArrowRight' || estado == 'ArrowLeft') //Se tiver pressionado alguma das setas
+      ultima_posicao = estado;
+  
+    if (estado == 'w' || estado == 's' || estado == 'a' || estado == 'd') //Se tiver pressionado alguma dos WASD
+      ultima_posicao2 = estado;
+  
+  
+    
+    switch (ultima_posicao){ //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
         y -= velocidade;
         image (Jog_Tras[posicao], x, y);
@@ -99,9 +110,11 @@ function draw() {
         x -= velocidade;
         image (Jog_Esquerda[posicao], x, y);
         break;
-        
+    }
      
-      //MOVIMENTO DO INDIO
+  
+  
+    switch (ultima_posicao2){ //MOVIMENTO DO INDIO
       case 'w':
         y2 -= velocidade;
         image (Ind_Tras[posicao2], x2, y2);
@@ -147,6 +160,14 @@ function draw() {
     if (posicao2 > 3)
       posicao2 = 0;
 }
+    
+    
+    
+    
+    
+    
+    
+    
 
   </script>
 
