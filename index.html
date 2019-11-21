@@ -74,8 +74,12 @@ function setup() {
 }
 
 function draw() {
-    background ("white");
-    
+    if (keyIsPressed == true){
+      estado = key; 
+      
+    else 
+      estado = 0
+
     if (key == 'ArrowUp' || key == 'ArrowDown' || key == 'ArrowRight' || key == 'ArrowLeft') //Se tiver pressionado alguma das setas
       ultima_posicao = key;
   
@@ -83,26 +87,30 @@ function draw() {
       ultima_posicao2 = key;
   
   
-    if (keyIsPressed == true){ 
+    if (keyIsPressed == true && (ultima_posicao == key || ultima_posicao2 == key)){ 
       
      switch (ultima_posicao){ //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
         y -= velocidade;
+        background ("white");
         image (Jog_Tras[posicao], x, y);
         break;
       
       case 'ArrowDown':
         y += velocidade;
+        background ("white");
         image (Jog_Frente[posicao], x, y);
         break;
     
       case 'ArrowRight':
         x += velocidade;
+        background ("white");
         image (Jog_Direita[posicao], x, y);
         break;
       
       case 'ArrowLeft':
         x -= velocidade;
+        background ("white");
         image (Jog_Esquerda[posicao], x, y);
         break;
     }
@@ -111,6 +119,7 @@ function draw() {
     switch (ultima_posicao2){ //MOVIMENTO DO INDIO
       case 'w':
         y2 -= velocidade;
+        background ("white");
         image (Ind_Tras[posicao2], x2, y2);
         break;
       
@@ -121,11 +130,13 @@ function draw() {
     
       case 'd':
         x2 += velocidade;
+        background ("white");
         image (Ind_Direita[posicao2], x2, y2);
         break;
       
       case 'a':
         x2 -= velocidade;
+        background ("white");
         image (Ind_Esquerda[posicao2], x2, y2);
         break;  
      }//Switch
