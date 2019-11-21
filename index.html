@@ -5,9 +5,7 @@
   <script>
     var x = 0, y = 0, estado, velocidade = 3;
     var posicao = 0, cont = 0, delay = 5;
-    var x2 = 0, y2 = 0, posicao2 = 0, cont2 = 0;
-    
-    var ultima_posicao = 0, ultima_posicao2 = 0;
+    //var x2 = 0, y2 = 0, posicao2 = 0, cont2 = 0;
     
     var Jog_Frente = [];
     var Jog_Direita = [];
@@ -75,14 +73,13 @@ function setup() {
 
 function draw() {
 
-    if (key == 'ArrowUp' || key == 'ArrowDown' || key == 'ArrowRight' || key == 'ArrowLeft') //Se tiver pressionado alguma das setas
-      ultima_posicao = key;
-  
-    if (key == 'w' || key == 's' || key == 'a' || key == 'd') //Se tiver pressionado alguma dos WASD
-      ultima_posicao2 = key;
+    if(keyIsPressed == true){
+      estado = key;
+    else
+      estado = 0;
   
       
-    switch (ultima_posicao){ //MOVIMENTO DO JOGADOR
+    switch (estado){ //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
         y -= velocidade;
         background ("white");
@@ -108,29 +105,6 @@ function draw() {
         break;
     }
    
-      
-    switch (ultima_posicao2){ //MOVIMENTO DO INDIO
-      case 'w':
-        y2 -= velocidade;
-        image (Ind_Tras[posicao2], x2, y2);
-        break;
-      
-      case 's':
-        y2 += velocidade;
-        image (Ind_Frente[posicao2], x2, y2);
-        break;
-    
-      case 'd':
-        x2 += velocidade;
-        image (Ind_Direita[posicao2], x2, y2);
-        break;
-      
-      case 'a':
-        x2 -= velocidade;
-        image (Ind_Esquerda[posicao2], x2, y2);
-        break;  
-    }
-      
   
     if (keyIsPressed == true){ //Efeito de Delay na animação da sprite
       if (cont == delay){ // JOGADOR
@@ -139,21 +113,12 @@ function draw() {
       }
       else
         cont++;
-      
-      if (cont2 == delay){ //INDIO
-        posicao2++;
-        cont2 = 0;
-      }
-      else
-        cont2++;
-      
     }
-   
     if (posicao > 3)
       posicao = 0;
-  
-    if (posicao2 > 3)
-      posicao2 = 0;
+      
+    image (Ind_Frente[0], 100, 100);
+
 }
   
   </script>
