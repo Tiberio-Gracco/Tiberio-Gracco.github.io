@@ -6,72 +6,34 @@
     var x = 0, y = 0, estado, velocidade = 3;
     var posicao = 0, tempoPos = 0, velocAnim = 5;
     
-    var jogador = [4];
-    var indio = [4];
+    var Jog_Frente = [];
+    var Jog_Direita = [];
+    var Jog_Esquerda = [];
+    var Jog_Tras = [];
 
     
 function preload(){
   //Salva as img de movimentação dos persongagens
-  jogador = [
-              //Frente
-              [loadImage("Imagens/Jogador - Frente0.png"),
-               loadImage("Imagens/Jogador - Frente1.png"),
-               loadImage("Imagens/Jogador - Frente2.png"),
-               loadImage("Imagens/Jogador - Frente3.png")
-              ]
-    
-              //Esquerda
-              [loadImage("Imagens/Jogador - Esquerda0.png"),
-              loadImage("Imagens/Jogador - Esquerda1.png"),
-              loadImage("Imagens/Jogador - Esquerda2.png"),
-              loadImage("Imagens/Jogador - Esquerda3.png")
-              ]
-    
-              //Direita
-              [loadImage("Imagens/Jogador - Direita0.png"),
-              loadImage("Imagens/Jogador - Direita1.png"),
-              loadImage("Imagens/Jogador - Direita2.png"),
-              loadImage("Imagens/Jogador - Direita3.png")
-              ]
-    
-              //Trás
-              [loadImage("Imagens/Jogador - Trás0.png"),
-              loadImage("Imagens/Jogador - Trás1.png"),
-              loadImage("Imagens/Jogador - Trás2.png"),
-              loadImage("Imagens/Jogador - Trás3.png")
-              ]
-            ]
-  /*
-  indio = [
-              //Frente
-              [loadImage("Imagens/Índio - Frente0"),
-               loadImage("Imagens/Índio - Frente1"),
-               loadImage("Imagens/Índio - Frente2"),
-               loadImage("Imagens/Índio - Frente3")
-              ]
-    
-              //Esquerda
-              [loadImage("Imagens/Índio - Esquerda0"),
-              loadImage("Imagens/Índio - Esquerda1");
-              loadImage("Imagens/Índio - Esquerda2");
-              loadImage("Imagens/Índio - Esquerda3");
-              ]
-    
-              //Direita
-              [loadImage("Imagens/Índio - Direita0"),
-              loadImage("Imagens/Índio - Direita1");
-              loadImage("Imagens/Índio - Direita2");
-              loadImage("Imagens/Índio - Direita3");
-              ]
-    
-              //Trás
-              [loadImage("Imagens/Índio - Trás0"),
-              loadImage("Imagens/Índio - Trás1");
-              loadImage("Imagens/Índio - Trás2");
-              loadImage("Imagens/Índio - Trás3");
-              ]
-            ]
-*/
+  
+  Jog_Frente[0] = loadImage("Imagens/Jogador - Frente0.png");
+  Jog_Frente[1] = loadImage("Imagens/Jogador - Frente1.png");
+  Jog_Frente[2] = loadImage("Imagens/Jogador - Frente2.png");
+  Jog_Frente[3] = loadImage("Imagens/Jogador - Frente3.png");
+  
+  Jog_Direita[0] = loadImage("Imagens/Jogador - Direita0.png");
+  Jog_Direita[1] = loadImage("Imagens/Jogador - Direita1.png");
+  Jog_Direita[2] = loadImage("Imagens/Jogador - Direita2.png");
+  Jog_Direita[3] = loadImage("Imagens/Jogador - Direita3.png");
+  
+  Jog_Esquerda[0] = loadImage("Imagens/Jogador - Esquerda0.png");
+  Jog_Esquerda[1] = loadImage("Imagens/Jogador - Esquerda1.png");
+  Jog_Esquerda[2] = loadImage("Imagens/Jogador - Esquerda2.png");
+  Jog_Esquerda[3] = loadImage("Imagens/Jogador - Esquerda3.png");
+  
+  Jog_Tras[0] = loadImage("Imagens/Jogador - Trás0.png");
+  Jog_Tras[1] = loadImage("Imagens/Jogador - Trás1.png");
+  Jog_Tras[2] = loadImage("Imagens/Jogador - Trás2.png");
+  Jog_Tras[3] = loadImage("Imagens/Jogador - Trás3.png");
 }
     
 function setup() {
@@ -89,25 +51,25 @@ function draw() {
       case 'ArrowUp':
         y -= velocidade;
         background("white");
-        image (jogador[3][posicao], x, y);
+        image (Jog_Tras[posicao], x, y);
         break;
       
       case 'ArrowDown':
         y += velocidade;
         background("white");
-        image (jogador[0][posicao], x, y);
+        image (Jog_Frente[posicao], x, y);
         break;
     
       case 'ArrowRight':
         x += velocidade;
         background("white");
-        image (jogador[2][posicao], x, y);
+        image (Jog_Direita[posicao], x, y);
         break;
       
       case 'ArrowLeft':
         x -= velocidade;
         background("white");
-        image (jogador[1][posicao], x, y);
+        image (Jog_Esquerda[posicao], x, y);
         break;
     }
   
