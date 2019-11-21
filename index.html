@@ -127,6 +127,17 @@ function draw() {
     if (posicao > 3)
       posicao = 0;
       
+  
+    if (x2 > x) //MOVIMENTAÇÃO DO INDIO
+      x2--;
+    else
+      x2++;
+  
+    if (y2 > y)
+      y2--;
+    else
+      y2++;
+  
     image (Ind_Frente[0], x2, y2); //Exibe o Indio
 
 }
