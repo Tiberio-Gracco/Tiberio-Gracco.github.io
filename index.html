@@ -7,6 +7,8 @@
     var posicao = 0, cont = 0, delay = 5;
     //var x2 = 0, y2 = 0, posicao2 = 0, cont2 = 0;
     
+    var x2 = 100, y2 = 100; //Coordenadas do Indio
+    
     var Jog_Frente = [];
     var Jog_Direita = [];
     var Jog_Esquerda = [];
@@ -81,27 +83,35 @@ function draw() {
       
     switch (estado){ //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
-        y -= velocidade;
-        background ("white");
-        image (Jog_Tras[posicao], x, y);
+        if (colisao(x, y, 32, 77, x2, y2, 32, 77) == false){
+          y -= velocidade;
+          background ("white");
+          image (Jog_Tras[posicao], x, y);
+        }
         break;
       
       case 'ArrowDown':
-        y += velocidade;
-        background ("white");
-        image (Jog_Frente[posicao], x, y);
+        if (colisao(x, y, 32, 77, x2, y2, 32, 77) == false){
+          y += velocidade;
+          background ("white");
+          image (Jog_Frente[posicao], x, y);
+        }
         break;
     
       case 'ArrowRight':
-        x += velocidade;
-        background ("white");
-        image (Jog_Direita[posicao], x, y);
+        if (colisao(x, y, 32, 77, x2, y2, 32, 77) == false){
+          x += velocidade;
+          background ("white");
+          image (Jog_Direita[posicao], x, y);
+        }  
         break;
       
       case 'ArrowLeft':
-        x -= velocidade;
-        background ("white");
-        image (Jog_Esquerda[posicao], x, y);
+        if (colisao(x, y, 32, 77, x2, y2, 32, 77) == false){
+          x -= velocidade;
+          background ("white");
+          image (Jog_Esquerda[posicao], x, y);
+        }
         break;
     }
    
@@ -117,9 +127,27 @@ function draw() {
     if (posicao > 3)
       posicao = 0;
       
-    image (Ind_Frente[0], 100, 100);
+    image (Ind_Frente[0], x2, y2); //Exibe o Indio
 
 }
+    
+function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
+  //Colisão entre dois objetos A e B.
+  //Entrar com as coordenadas (x e y) bem como o comprimento e altura de ambos.
+  
+  if (xA + compA < xB) //A está a esquerda de B
+    return false;
+  if (xB < xA - compB) //A está a direita de B
+    return false;
+  if (yA - altB > yB) //A está embaixo de B
+    return false;
+  if (yA + altA < yB) //A está acima de B
+    return false;
+  
+  return true; //Se ele não entrar em nenhuma dessas 4 situações,
+               //então ele está colidindo
+}
+    
   
   </script>
 
