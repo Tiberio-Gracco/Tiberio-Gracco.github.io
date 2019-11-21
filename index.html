@@ -7,7 +7,7 @@
     var posicao = 0, cont = 0, delay = 5;
     //var x2 = 0, y2 = 0, posicao2 = 0, cont2 = 0;
     
-    var x2 = 100, y2 = 100; //Coordenadas do Indio
+    var x2 = 500, y2 = 500; //Coordenadas do Indio
     var aux;
     
     var Jog_Frente = [];
@@ -72,6 +72,7 @@ function preload(){
     
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  image (Jog_Frente[0], 0, 0);
 }
 
 function draw() {
