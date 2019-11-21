@@ -76,7 +76,6 @@ function setup() {
 function draw() {
     if (keyIsPressed == true){
       estado = key; 
-      
     else 
       estado = 0
 
@@ -87,7 +86,7 @@ function draw() {
       ultima_posicao2 = key;
   
   
-    if (keyIsPressed == true && (ultima_posicao == key || ultima_posicao2 == key)){ 
+    if (keyIsPressed == true && ultima_posicao == key){ 
       
      switch (ultima_posicao){ //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
@@ -113,10 +112,11 @@ function draw() {
         background ("white");
         image (Jog_Esquerda[posicao], x, y);
         break;
-    }
-  
+     }
+    }//if
       
-    switch (ultima_posicao2){ //MOVIMENTO DO INDIO
+    if (keyIsPressed == true && ultima_posicao2 == key){  
+     switch (ultima_posicao2){ //MOVIMENTO DO INDIO
       case 'w':
         y2 -= velocidade;
         background ("white");
@@ -166,15 +166,7 @@ function draw() {
     if (posicao2 > 3)
       posicao2 = 0;
 }
-    
-    
-    
-    
-    
-    
-    
-    
-
+  
   </script>
 
   <style> body {padding: 0; margin: 0;} </style>
