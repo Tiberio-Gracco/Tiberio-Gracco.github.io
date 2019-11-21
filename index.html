@@ -74,23 +74,18 @@ function setup() {
 }
 
 function draw() {
-  
     background ("white");
-    if (keyIsPressed == true)
-      estado = key;
-    else
-      estado = 0;
-  
-  
-    if (estado == 'ArrowUp' || estado == 'ArrowDown' || estado == 'ArrowRight' || estado == 'ArrowLeft') //Se tiver pressionado alguma das setas
+    
+    if (key == 'ArrowUp' || key == 'ArrowDown' || key == 'ArrowRight' || key == 'ArrowLeft') //Se tiver pressionado alguma das setas
       ultima_posicao = estado;
   
-    if (estado == 'w' || estado == 's' || estado == 'a' || estado == 'd') //Se tiver pressionado alguma dos WASD
+    if (key == 'w' || key == 's' || key == 'a' || key == 'd') //Se tiver pressionado alguma dos WASD
       ultima_posicao2 = estado;
   
   
-    
-    switch (ultima_posicao){ //MOVIMENTO DO JOGADOR
+    if (keyIsPressed == true){ 
+      
+     switch (ultima_posicao){ //MOVIMENTO DO JOGADOR
       case 'ArrowUp':
         y -= velocidade;
         image (Jog_Tras[posicao], x, y);
@@ -111,9 +106,8 @@ function draw() {
         image (Jog_Esquerda[posicao], x, y);
         break;
     }
-     
   
-  
+      
     switch (ultima_posicao2){ //MOVIMENTO DO INDIO
       case 'w':
         y2 -= velocidade;
@@ -133,9 +127,10 @@ function draw() {
       case 'a':
         x2 -= velocidade;
         image (Ind_Esquerda[posicao2], x2, y2);
-        break;
-        
-    }
+        break;  
+     }//Switch
+      
+    }//If
   
     if (keyIsPressed == true){ //Efeito de Delay na animação da sprite
       if (cont == delay){ // JOGADOR
