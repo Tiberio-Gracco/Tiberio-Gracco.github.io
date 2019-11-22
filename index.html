@@ -11,6 +11,8 @@
     
     var aux, dist, aux2;
     
+    var vida = 100;
+    
     var Jog_Frente = [];
     var Jog_Direita = [];
     var Jog_Esquerda = [];
@@ -170,6 +172,14 @@ function draw() {
     }
   else
     image (Ind_Frente[0], x2, y2);
+  
+  
+  
+  if (colisao (x, y, 33, 77, x2, y2, 33, 77) == true){
+    vida--;
+  }
+  fill ("red");
+  text ("Vida: "+ vida, x, y);
    
 }
     
