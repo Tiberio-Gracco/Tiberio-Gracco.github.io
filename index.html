@@ -5,10 +5,11 @@
   <script>
     var x = 0, y = 0, estado, passos = 3;
     var posicao = 0, cont = 0, delay = 5;
-    //var x2 = 0, y2 = 0, posicao2 = 0, cont2 = 0;
-    
+        
     var x2 = 500, y2 = 500; //Coordenadas do Indio
-    var aux, dist;
+    var posicao2 = 0, cont2 = 0;
+    
+    var aux, dist, aux2;
     
     var Jog_Frente = [];
     var Jog_Direita = [];
@@ -73,6 +74,7 @@ function preload(){
 function setup() {
   createCanvas(windowWidth, windowHeight);
   aux = Jog_Frente[0];
+  aux2 = Ind_Frente[0];
 }
 
 function draw() {
@@ -116,8 +118,8 @@ function draw() {
     ellipse (x2, y2, 400, 400);
     image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
   
-    if (keyIsPressed == true){ //Efeito de Delay na animação da sprite
-      if (cont == delay){ // JOGADOR
+    if (keyIsPressed == true){ //Animação da sprite do jogador
+      if (cont == delay){
         posicao++;
         cont = 0;
       }
@@ -134,20 +136,33 @@ function draw() {
   
     if (dist < 200){ // Área de Ataque do Indio
       
+      if (cont2 == delay){//Animação da Sprite do Índio
+        posicao2++;
+        cont2 = 0;
+      }
+      else
+        cont2++;
+    
+    if (posicao2 > 3)
+      posicao2 = 0;
+      
+      
       // MOVIMENTAÇÃO DO INDIO
-      if (x2 < x && colisao (x2 + 1, y2, 33, 77, x, y, 33, 77) == false) //Jogador à direita do Indio 
+      if (x2 < x && colisao (x2 + 1, y2, 33, 77, x, y, 33, 77) == false){ //Jogador à direita do Indio 
         x2++;
+        aux2 = Ind_Direita[posicao2];
+      }
       if (x2 > x && colisao (x2 - 1, y2, 33, 77, x, y, 33, 77) == false) //Jogador à esquerda do Indio
         x2--;
       if (y2 < y && colisao (x2, y2 + 1, 33, 77, x, y, 33, 77) == false) //Jogador abaixo do Indio
         y2++;
-      if (y2 > y && colisao (x2, y2 - 1, 33, 77, x, y, 33, 77) == false) //Jogador acima do Indio 
+      if (y2 > y && colisao (x2, y2 - 1, 33, 77, x, y, 33, 77) == false){ //Jogador acima do Indio 
         y2--;
+        aux2 = Ind_Frente[posicao2];
+      }
     }
   
-   
-  
-    image (Ind_Frente[0], x2, y2); //Exibe o Indio
+    image (aux, x2, y2); //Exibe o Indio já atualizado
 
 }
     
