@@ -8,7 +8,7 @@
     //var x2 = 0, y2 = 0, posicao2 = 0, cont2 = 0;
     
     var x2 = 500, y2 = 500; //Coordenadas do Indio
-    var aux;
+    var aux, dist;
     
     var Jog_Frente = [];
     var Jog_Direita = [];
@@ -127,17 +127,22 @@ function draw() {
     if (posicao > 3)
       posicao = 0;
     
-  
-    //MOVIMENTAÇÃO DO INDIO
-    if (x2 < x &&  x2 + 200 > x) //Jogador à direita do Indio e dentro da área de ataque
-      x2++;
-    if (x2 > x && x2 - 200 < x) //Jogador à esquerda do Indio e dentro da área de ataque
-      x2--;
     
-    if (y2 < y && y2 + 200 > y) //Jogador abaixo do Indio e dentro da área de ataque
-      y2++;
-    if (y2 > y && y2 - 200 < y) //Jogador acima do Indio e dentro da área de ataque
-      y2--;
+    dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
+  
+    if (dist < 200){
+      // MOVIMENTAÇÃO DO INDIO
+      if (x2 < x &&  x2 + 200 > x) //Jogador à direita do Indio e dentro da área de ataque
+        x2++;
+      if (x2 > x && x2 - 200 < x) //Jogador à esquerda do Indio e dentro da área de ataque
+        x2--;
+      if (y2 < y && y2 + 200 > y) //Jogador abaixo do Indio e dentro da área de ataque
+        y2++;
+      if (y2 > y && y2 - 200 < y) //Jogador acima do Indio e dentro da área de ataque
+        y2--;
+    }
+  
+   
   
     image (Ind_Frente[0], x2, y2); //Exibe o Indio
 
