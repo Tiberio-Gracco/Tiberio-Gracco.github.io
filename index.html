@@ -128,14 +128,14 @@ function draw() {
       posicao = 0;
       
   
-    if (x2 > x) //MOVIMENTAÇÃO DO INDIO
+    if (x2 - 200 < x) //MOVIMENTAÇÃO DO INDIO
       x2--;
-    else
+    if (x2 + 200 > x)
       x2++;
-  
-    if (y2 > y)
+      
+    if (y2 + 200 > y)
       y2--;
-    else
+    if (y2 - 200 < y)
       y2++;
   
     image (Ind_Frente[0], x2, y2); //Exibe o Indio
