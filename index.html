@@ -130,17 +130,18 @@ function draw() {
     
     dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
     text (dist, 50, 50);
-    ellipse (x2, y2, 200, 200);
+    ellipse (x2, y2, 400, 400);
   
-    if (dist < 200){
+    if (dist < 200){ // Área de Ataque do Indio
+      
       // MOVIMENTAÇÃO DO INDIO
-      if (x2 < x) //Jogador à direita do Indio e dentro da área de ataque
+      if (x2 < x) //Jogador à direita do Indio 
         x2++;
-      if (x2 > x) //Jogador à esquerda do Indio e dentro da área de ataque
+      if (x2 > x) //Jogador à esquerda do Indio
         x2--;
-      if (y2 < y) //Jogador abaixo do Indio e dentro da área de ataque
+      if (y2 < y) //Jogador abaixo do Indio
         y2++;
-      if (y2 > y) //Jogador acima do Indio e dentro da área de ataque
+      if (y2 > y) //Jogador acima do Indio 
         y2--;
     }
   
