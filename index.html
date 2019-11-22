@@ -115,8 +115,6 @@ function draw() {
         }
         break;
     }
-    ellipse (x2, y2, 400, 400);
-    image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
   
     if (keyIsPressed == true){ //Animação da sprite do jogador
       if (cont == delay){
@@ -129,10 +127,13 @@ function draw() {
     if (posicao > 3)
       posicao = 0;
     
+    ellipse (x2, y2, 400, 400);
+    image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
     
+  
     dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
     text (dist, 50, 50);
-    
+     
   
     if (dist < 200){ // Área de Ataque do Indio
       
@@ -143,8 +144,8 @@ function draw() {
       else
         cont2++;
     
-    if (posicao2 > 3)
-      posicao2 = 0;
+      if (posicao2 > 3)
+        posicao2 = 0;
       
       
       // MOVIMENTAÇÃO DO INDIO
@@ -164,10 +165,12 @@ function draw() {
         y2--;
         aux2 = Ind_Tras[posicao2];
       }
+      
+      image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
     }
-  
-    image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
-
+  else
+    image (Ind_Frente[0], x2, y2);
+   
 }
     
 function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
