@@ -134,10 +134,10 @@ function draw() {
     if (x2 > x && x2 - 200 < x) //Jogador à esquerda do Indio e dentro da área de ataque
       x2--;
     
-    if (y2 < y && y2 + 200 > y) //Jogador acima do Indio e dentro da área de ataque
-      y2--;
-    if (y2 > y && y2 - 200 < y) //Jogador abaixo do Indio e dentro da área de ataque
+    if (y2 < y && y2 + 200 > y) //Jogador abaixo do Indio e dentro da área de ataque
       y2++;
+    if (y2 > y && y2 - 200 < y) //Jogador acima do Indio e dentro da área de ataque
+      y2--;
   
     image (Ind_Frente[0], x2, y2); //Exibe o Indio
 
