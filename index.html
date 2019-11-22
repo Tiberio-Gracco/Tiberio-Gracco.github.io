@@ -126,16 +126,17 @@ function draw() {
     }
     if (posicao > 3)
       posicao = 0;
-      
+    
   
-    if (x2 - 200 < x) //MOVIMENTAÇÃO DO INDIO
-      x2--;
-    if (x2 + 200 > x)
+    //MOVIMENTAÇÃO DO INDIO
+    if (x2 < x &&  x2 + 200 > x) //Jogador à direita do Indio e dentro da área de ataque
       x2++;
-      
-    if (y2 + 200 > y)
+    if (x2 > x && x2 - 200 < x) //Jogador à esquerda do Indio e dentro da área de ataque
+      x2--;
+    
+    if (y2 < y && y2 + 200 > y) //Jogador acima do Indio e dentro da área de ataque
       y2--;
-    if (y2 - 200 < y)
+    if (y2 > y && y2 - 200 < y) //Jogador abaixo do Indio e dentro da área de ataque
       y2++;
   
     image (Ind_Frente[0], x2, y2); //Exibe o Indio
