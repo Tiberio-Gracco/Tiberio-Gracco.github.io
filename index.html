@@ -113,7 +113,7 @@ function draw() {
         }
         break;
     }
-   
+    ellipse (x2, y2, 400, 400);
     image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
   
     if (keyIsPressed == true){ //Efeito de Delay na animação da sprite
@@ -130,7 +130,7 @@ function draw() {
     
     dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
     text (dist, 50, 50);
-    ellipse (x2, y2, 400, 400);
+    
   
     if (dist < 200){ // Área de Ataque do Indio
       
