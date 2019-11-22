@@ -152,17 +152,21 @@ function draw() {
         x2++;
         aux2 = Ind_Direita[posicao2];
       }
-      if (x2 > x && colisao (x2 - 1, y2, 33, 77, x, y, 33, 77) == false) //Jogador à esquerda do Indio
+      if (x2 > x && colisao (x2 - 1, y2, 33, 77, x, y, 33, 77) == false){ //Jogador à esquerda do Indio
         x2--;
+        aux2 = Ind_Esquerda[posicao2];
+      }
       if (y2 < y && colisao (x2, y2 + 1, 33, 77, x, y, 33, 77) == false) //Jogador abaixo do Indio
         y2++;
+        aux2 = Ind_Frente[posicao2];
+      }
       if (y2 > y && colisao (x2, y2 - 1, 33, 77, x, y, 33, 77) == false){ //Jogador acima do Indio 
         y2--;
-        aux2 = Ind_Frente[posicao2];
+        aux2 = Ind_Tras[posicao2];
       }
     }
   
-    image (aux2, x2, y2); //Exibe o Indio já atualizado
+    image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
 
 }
     
