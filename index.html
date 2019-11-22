@@ -128,7 +128,8 @@ function draw() {
     }
     if (posicao > 3)
       posicao = 0;
-    
+  
+    noFill();
     ellipse (x2, y2, 400, 400);
     image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
     
