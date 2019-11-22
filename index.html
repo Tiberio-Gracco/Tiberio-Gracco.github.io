@@ -178,9 +178,12 @@ function draw() {
   
   if (colisao (x, y, 33, 77, x2, y2, 33, 77) == true){
     vida--;
+    fill ("black");
+    text ("Colidiu", 100, 100);
   }
   fill ("red");
   text ("Vida: "+ vida, x, y);
+  
    
 }
     
