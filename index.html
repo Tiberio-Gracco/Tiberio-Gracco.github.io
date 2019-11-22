@@ -135,13 +135,13 @@ function draw() {
     if (dist < 200){ // Área de Ataque do Indio
       
       // MOVIMENTAÇÃO DO INDIO
-      if (x2 < x) //Jogador à direita do Indio 
+      if (x2 < x && colisao (x2 + 1, y2, 33, 77, x, y, 33, 77) == false) //Jogador à direita do Indio 
         x2++;
-      if (x2 > x) //Jogador à esquerda do Indio
+      if (x2 > x && colisao (x2 - 1, y2, 33, 77, x, y, 33, 77) == false) //Jogador à esquerda do Indio
         x2--;
-      if (y2 < y) //Jogador abaixo do Indio
+      if (y2 < y && colisao (x2, y2 + 1, 33, 77, x, y, 33, 77) == false) //Jogador abaixo do Indio
         y2++;
-      if (y2 > y) //Jogador acima do Indio 
+      if (y2 > y && colisao (x2, y2 - 1, 33, 77, x, y, 33, 77) == false) //Jogador acima do Indio 
         y2--;
     }
   
