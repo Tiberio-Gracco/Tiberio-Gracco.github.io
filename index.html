@@ -11,7 +11,7 @@
     
     var aux, dist, aux2;
     
-    var vida = 100;
+    var vida = 100, coracao;
     
     var Jog_Frente = [];
     var Jog_Direita = [];
@@ -71,6 +71,8 @@ function preload(){
   Ind_Tras[2] = loadImage("Imagens/Índio - Trás2.png");
   Ind_Tras[3] = loadImage("Imagens/Índio - Trás3.png");
   
+  coracao = loadImage ("Imagens/Vida.png");
+  
 }
     
 function setup() {
@@ -129,15 +131,16 @@ function draw() {
     if (posicao > 3)
       posicao = 0;
   
+  
+  
+  
     noFill();
     ellipse (x2, y2, 400, 400); //área de perseguição
     ellipse (x2, y2, 200, 200); //área de ataque
     image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
     
-  
     dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
-    fill ("black");
-    text (dist, 50, 50);
+      
      
   
     if (dist < 200){ // Área de Ataque do Indio
@@ -178,13 +181,13 @@ function draw() {
   
   
   
-  if (dist < 100){
-    vida--;
-    fill ("black");
-    text ("Colidiu", 100, 100);
+  if (dist < 100){ //Área de ataque do Índio
+    vida = vida - (1/5);
   }
+  
+  image (coracao, 100, 100);
   fill ("red");
-  text ("Vida: "+ vida, x, y);
+  rect (140, 100, vida, 32);
   
    
 }
