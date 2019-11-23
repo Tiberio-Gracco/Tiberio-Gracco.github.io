@@ -130,7 +130,8 @@ function draw() {
       posicao = 0;
   
     noFill();
-    ellipse (x2, y2, 400, 400);
+    ellipse (x2, y2, 400, 400); //área de perseguição
+    ellipse (x2, y2, 200, 200); //área de ataque
     image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
     
   
@@ -177,7 +178,7 @@ function draw() {
   
   
   
-  if (dist < 80){
+  if (dist < 100){
     vida--;
     fill ("black");
     text ("Colidiu", 100, 100);
