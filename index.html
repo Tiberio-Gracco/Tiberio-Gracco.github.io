@@ -238,13 +238,23 @@ function draw() {
   angulo = atan2 (mouseY - ySabre, mouseX - xSabre);
   
   
-  push();
-  translate (xSabre, ySabre);
-  rotate(angulo);
-  image (sabre, 0, -39);
-  pop();
+  if (angulo >= -HALF_PI && a <= HALF_PI){//Mouse na direita
+    push();
+    translate (xSabre, ySabre);
+    rotate(angulo);
+    image (sabre, 0, -39);
+    pop();
+  }
+  else{//Mouse na esquerda
   
-  
+    push();
+    translate (xSabre, ySabre);
+    rotate(angulo);
+    scale (1,-1);
+    image (sabre, 0, -39);
+    pop();
+    
+  }
   
 }
     
