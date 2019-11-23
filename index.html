@@ -15,6 +15,12 @@
     var balas = 15, cartucho;
     var madeira = 0, tora;
     
+    var espingarda, sabre;
+    var xSabre = x + 21, ySabre = y + 12;
+    
+    
+    var angulo;
+    
     var Jog_Frente = [];
     var Jog_Direita = [];
     var Jog_Esquerda = [];
@@ -77,6 +83,9 @@ function preload(){
   cartucho = loadImage ("Imagens/Munição 3.png");
   tora = loadImage ("Imagens/Madeira.png");
   
+  //ARMAS
+  espingarda = loadImage ("Imagens/Espingarda.png");
+  sabre = loadImage ("Imagens/Sabre.png");
   
 }
     
@@ -199,6 +208,7 @@ function draw() {
   image (cartucho, 20, 62);
   image (tora, 20, 104);
   
+  push();
   fill ("white");
   rect (70, 26, 100, 20, 5);
   fill ("red");
@@ -220,10 +230,16 @@ function draw() {
   textSize (30);
   stroke("black");
   text (balas, 80, 90);
+  pop();
   
   
+  angulo = atan2 (mouseY - ySabre, mouseX - xSabre);
   
-  fill ("black");
+  push();
+  translate (xSabre, ySabre);
+  rotate(angulo);
+  image (sabre, 0, -39);
+  pop();
   
   
 }
@@ -247,8 +263,10 @@ function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
     
     
 function mouseClicked(){
- if (balas > 0)
-   balas--;
+ //if (balas > 0)
+ //  balas--;
+  
+ 
 }
     
   
