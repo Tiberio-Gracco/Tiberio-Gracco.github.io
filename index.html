@@ -12,6 +12,8 @@
     var aux, dist, aux2;
     
     var vida = 100, coracao;
+    var balas = 0, cartucho;
+    var madeira = 0, tora;
     
     var Jog_Frente = [];
     var Jog_Direita = [];
@@ -72,6 +74,9 @@ function preload(){
   Ind_Tras[3] = loadImage("Imagens/Índio - Trás3.png");
   
   coracao = loadImage ("Imagens/Vida.png");
+  cartucho = loadImage ("Imagens/Munição 3.png");
+  tora = loadImage ("Imagens/Madeira.png");
+  
   
 }
     
@@ -118,6 +123,11 @@ function draw() {
           aux = Jog_Esquerda[posicao];
         }
         break;
+        
+      case 'Control':
+        madeira++;
+        break;
+        
     }
   
     if (keyIsPressed == true){ //Animação da sprite do jogador
@@ -185,13 +195,35 @@ function draw() {
     vida = vida - (1/5);
   }
   
-  image (coracao, 20, 20);
+  image (vida, 20, 20);
+  image (cartucho, 20, 62);
+  image (toras, 20, 104);
+  
   fill ("white");
   rect (70, 26, 100, 20, 5);
   fill ("red");
-  rect (70, 26, vida, 20, 5);
+  rect (70, 26, life, 20, 5);
   
-   
+  fill ("green");
+  text (madeira, 80, 145);
+  
+  //CONFIG BALAS
+  if (balas > 10)
+    fill ("green");
+  
+  if (balas <= 10 && balas > 5)
+    fill ("yellow");
+  
+  if (balas <= 5)
+    fill ("red");
+  
+  textSize (30);
+  stroke("black");
+  text (balas, 80, 90);
+  
+  
+  
+  fill ("black");
 }
     
 function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
@@ -209,6 +241,12 @@ function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
   
   return true; //Se ele não entrar em nenhuma dessas 4 situações,
                //então ele está colidindo
+}
+    
+    
+function mouseClicked(){
+ if (balas > 0)
+   balas--;
 }
     
   
