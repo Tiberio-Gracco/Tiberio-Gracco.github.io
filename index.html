@@ -16,7 +16,7 @@
     var madeira = 0, tora;
     
     var espingarda, sabre;
-    var xSabre = x + 21, ySabre = y + 12;
+    var xSabre, ySabre;
     
     
     var angulo;
@@ -209,6 +209,8 @@ function draw() {
   image (tora, 20, 104);
   
   push();
+  textSize (30);
+  
   fill ("white");
   rect (70, 26, 100, 20, 5);
   fill ("red");
@@ -227,19 +229,21 @@ function draw() {
   if (balas <= 5)
     fill ("red");
   
-  textSize (30);
   stroke("black");
   text (balas, 80, 90);
   pop();
   
   
   angulo = atan2 (mouseY - ySabre, mouseX - xSabre);
+  xSabre = x + 21;
+  ySabre = y + 12;
   
   push();
   translate (xSabre, ySabre);
   rotate(angulo);
   image (sabre, 0, -39);
   pop();
+  
   
   
 }
