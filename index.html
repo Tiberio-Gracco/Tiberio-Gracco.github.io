@@ -135,6 +135,7 @@ function draw() {
     
   
     dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
+    fill ("black");
     text (dist, 50, 50);
      
   
@@ -176,7 +177,7 @@ function draw() {
   
   
   
-  if (dist < 10){
+  if (dist < 80){
     vida--;
     fill ("black");
     text ("Colidiu", 100, 100);
