@@ -238,7 +238,7 @@ function draw() {
   angulo = atan2 (mouseY - ySabre, mouseX - xSabre);
   
   
-  if (angulo >= -HALF_PI && a <= HALF_PI){//Mouse na direita
+  if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
     push();
     translate (xSabre, ySabre);
     rotate(angulo);
