@@ -298,12 +298,13 @@ function draw() {
   for (i = 0; i < quantTiros; i++){
     if (Xtiro[i] != 0){// Trajeto da bala
       Xtiro[i] += velocTiro;
+      Ytiro[i] = trajetoBala(xEsping, yEsping, mouseX, mouseY, Xtiro[i]);
       
-      if (i == 0)
+/*      if (i == 0)
         Ytiro[i] -= abertura;
       if (i == 2)
         Ytiro[i] += abertura;
-    }
+*/    }
     
     if (Xtiro[i] > 5000){ // --------------------          ----------------------------     Checar esse limite
        Xtiro[i] = 0;      //----------            ----------------------      e setar em relação a arma
@@ -365,7 +366,18 @@ function keyPressed (){
       arma = 0;
   }    
 }
-    
+
+function trajetoBala(xI, yI, xF, yF, xTraj){
+  //Essa função liga com uma reta dois pontos informados (xI, yI) e (xF, yF)
+  //E retorna o y relativo ao x que foi pedido na trajetória (xTraj)
+  var a, b, yTraj;
+  
+  a = (yF - yI)/(xF - xI);
+  b = yI - (a * xI);
+  
+  yTraj = (a * xTraj) + b;
+  return yTraj;
+}
   
   </script>
 
