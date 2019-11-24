@@ -17,6 +17,9 @@
     
     var espingarda, sabre;
     var xSabre, ySabre;
+    var xEsping, yEsping;
+    
+    var arma = 0; //Define qual arma vai usar (0 para Sabre, 1 para Espingarda)
     
     
     var angulo;
@@ -233,27 +236,45 @@ function draw() {
   text (balas, 80, 90);
   pop();
   
-  xSabre = x + 21;
-  ySabre = y + 51;
+  xSabre = x + 18;
+  ySabre = y + 38;
+  
+  xEsping = x + 4;
+  yEsping = y + 22;
+  
   angulo = atan2 (mouseY - ySabre, mouseX - xSabre);
   
   
   if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
     push();
-    translate (xSabre, ySabre);
     rotate(angulo);
-    image (sabre, 0, -39);
+    
+    if (arma == 0){ // Exibe o sabre
+      translate (xSabre, ySabre);
+      image (sabre, 5, -10);
+    }
+    else{ // Exibe a espingarda
+      translate (xEsping, yEsping);
+      image (espingarda, 0, -39);
+    }
+    
     pop();
   }
   else{//Mouse na esquerda
-  
     push();
-    translate (xSabre, ySabre);
     rotate(angulo);
     scale (1,-1);
-    image (sabre, 0, -39);
-    pop();
     
+    if (arma == 0){ // Exibe o sabre
+      translate (xSabre, ySabre);
+      image (sabre, 5, -10);
+    }
+    else{ // Exibe a espingarda
+      translate (xEsping, yEsping);
+      image (espingarda, 0, -39);
+    }
+    
+    pop();
   }
   
 }
@@ -277,10 +298,17 @@ function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
     
     
 function mouseClicked(){
- //if (balas > 0)
- //  balas--;
-  
- 
+ if (balas > 0)
+   balas--;
+}
+    
+function keyPressed (){
+ if (key == 'q'){ //Altera a arma
+    if (arma == 0)
+      arma = 1;
+    else
+      arma = 0;
+  }    
 }
     
   
