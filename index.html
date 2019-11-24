@@ -23,6 +23,7 @@
     var arma = 0; //Define qual arma vai usar (0 para Sabre, 1 para Espingarda)
     var quantTiros = 3, abertura = 10, cadencia = 30, velocTiro = 50, contTiros = 0;
     var Xtiro = [3], Ytiro = [3];
+    var xAlvo, yAlvo;
     
     Xtiro[0] = 0;
     Xtiro[1] = 0;
@@ -298,7 +299,7 @@ function draw() {
   for (i = 0; i < quantTiros; i++){
     if (Xtiro[i] != 0){// Trajeto da bala
       Xtiro[i] += velocTiro;
-      Ytiro[i] = trajetoBala(xEsping, yEsping, mouseX, mouseY, Xtiro[i]);
+      Ytiro[i] = trajetoBala(xEsping, yEsping, xAlvo, yAlvo, Xtiro[i]);
       
 /*      if (i == 0)
         Ytiro[i] -= abertura;
@@ -344,6 +345,9 @@ function mouseClicked(){
  if (arma == 1 && balas >= 3){ //Tá com a espingarda e tem munição
    
    if (contTiros > cadencia){//Disparo
+    xAlvo = mouseX;
+    yAlvo = mouseY; 
+    
     Xtiro[0] = xEsping + 10;
     Xtiro[1] = xEsping + 10; //Setar na arma
     Xtiro[2] = xEsping + 10;
@@ -353,7 +357,7 @@ function mouseClicked(){
     Ytiro[2] = yEsping - 10;
      
     contTiros = 0;
-    balas -= 3;
+    balas--;
    }
  }
 }
