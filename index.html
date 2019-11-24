@@ -247,14 +247,14 @@ function draw() {
   
   if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
     push();
-    rotate(angulo);
-    
     if (arma == 0){ // Exibe o sabre
       translate (xSabre, ySabre);
+      rotate(angulo);
       image (sabre, 5, -10);
     }
     else{ // Exibe a espingarda
       translate (xEsping, yEsping);
+      rotate(angulo);
       image (espingarda, 0, -39);
     }
     
@@ -262,15 +262,16 @@ function draw() {
   }
   else{//Mouse na esquerda
     push();
-    rotate(angulo);
     scale (1,-1);
     
     if (arma == 0){ // Exibe o sabre
       translate (xSabre, ySabre);
+      rotate(angulo);
       image (sabre, 5, -10);
     }
     else{ // Exibe a espingarda
       translate (xEsping, yEsping);
+      rotate(angulo);
       image (espingarda, 0, -39);
     }
     
