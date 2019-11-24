@@ -5,13 +5,15 @@
   <script>
     var x = 0, y = 0, estado, passos = 3;
     var posicao = 0, cont = 0, delay = 5;
+    var vida_Jog = 100;
         
     var x2 = 500, y2 = 500; //Coordenadas do Indio
     var posicao2 = 0, cont2 = 0;
+    var vida_Ind = 70;
     
     var aux, dist, aux2;
     
-    var vida = 100, coracao;
+    var vida = 100, coracao; //                 ------------------------------------------ Ajeitar a vida
     var balas = 15, cartucho;
     var madeira = 0, tora;
     
@@ -25,6 +27,7 @@
     var Xtiro = [3], Ytiro = [3];
     var xAlvo, yAlvo;
     var direcao; //Indica a direçao do mouse (0: Direita, 1: Esquerda)
+    var danoEsping = 10;
     
     Xtiro[0] = -10;
     Xtiro[1] = -10;
@@ -107,7 +110,6 @@ function preload(){
     
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //frameRate (30);    // --------------------     -------------------- Olhar isso depois
   aux = Jog_Frente[0];
   aux2 = Ind_Frente[0];
 }
@@ -277,7 +279,6 @@ function draw() {
   }
   if (angulo < -HALF_PI || angulo > HALF_PI){//Mouse na esquerda
     direcao = 1;
-    text ("Na esquerda", 500, 100);
     push();
     
     if (arma == 0){ // Exibe o sabre
@@ -316,12 +317,12 @@ function draw() {
     }
     
     
-    if (Xtiro[i] > xEsping + alcance || Xtiro[i] < xEsping - alcance){
-      Xtiro[i] = -10;      //----------            ----------------------      e setar em relação a arma
+    if (Xtiro[i] > xEsping + alcance || Xtiro[i] < xEsping - alcance){ //Limita o alcance da bala
+      Xtiro[i] = -10;      
       Ytiro[i] = -10;
     }
-    if (Ytiro[i] > yEsping + alcance || Ytiro[i] < yEsping - alcance){ // --------------------          ----------------------------     Checar esse limite
-      Xtiro[i] = -10;      //----------            ----------------------      e setar em relação a arma
+    if (Ytiro[i] > yEsping + alcance || Ytiro[i] < yEsping - alcance){
+      Xtiro[i] = -10;      
       Ytiro[i] = -10;  
     }
     
@@ -335,6 +336,18 @@ function draw() {
   }
   abertura += 3;
   contTiros++;
+  
+  
+  
+  for (i = 0; i < quantTiros; i++){
+    if (colisao(x2, y2, 33, 77, Xtiro[i], Ytiro[i], 10, 10) == true) //Se o indio for atingido por um tiro de espingarda
+      vida_Ind -= danoEsping;
+  }
+  
+  fill ("white");
+  rect (x2, y2 - 10, 70, 10);
+  fill ("green");
+  rect (x2, y2 - 10, vida_Ind, 10);
   
 }
     
