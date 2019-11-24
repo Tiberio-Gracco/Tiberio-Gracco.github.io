@@ -343,18 +343,14 @@ function mouseClicked(){
  if (arma == 1 && balas >= 3){ //Tá com a espingarda e tem munição
    
    if (contTiros > cadencia){//Disparo
-    Xtiro[0] = xEsping + 76;
-    Xtiro[1] = xEsping + 76; //Setar na arma
-    Xtiro[2] = xEsping + 76;
+    Xtiro[0] = xEsping;
+    Xtiro[1] = xEsping; //Setar na arma
+    Xtiro[2] = xEsping;
 
     Ytiro[0] = yEsping + 10;
     Ytiro[1] = yEsping + 10; //Setar na arma
     Ytiro[2] = yEsping + 10;
      
-/*    Xtiro[0] += velocTiro;
-    Xtiro[1] += velocTiro;
-    Xtiro[2] += velocTiro;
-*/    
     contTiros = 0;
     balas -= 3;
    }
