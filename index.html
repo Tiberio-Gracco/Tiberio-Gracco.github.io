@@ -302,17 +302,17 @@ function draw() {
   for (i = 0; i < quantTiros; i++){
     if (Xtiro[i] != 0){// Trajeto da bala
       
-      if (direcao == 0){//Mouse p/ Direita
+      if (direcao == 0)//Mouse p/ Direita
         Xtiro[i] += velocTiro;
       else              //Mouse p/ Esquerda
         Xtiro[i] -= velocTiro;
         
-        Ytiro[i] = trajetoBala(xEsping, yEsping, xAlvo, yAlvo, Xtiro[i]);
+      Ytiro[i] = trajetoBala(xEsping, yEsping, xAlvo, yAlvo, Xtiro[i]);
       
-        if (i == 0)
-          Ytiro[i] -= abertura ;
-        if (i == 2)
-          Ytiro[i] += abertura; 
+      if (i == 0)
+        Ytiro[i] -= abertura ;
+      if (i == 2)
+        Ytiro[i] += abertura; 
     }
     
     
