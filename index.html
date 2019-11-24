@@ -302,7 +302,7 @@ function draw() {
       Ytiro[i] = trajetoBala(xEsping, yEsping, xAlvo, yAlvo, Xtiro[i]);
       
       if (i == 0)
-        Ytiro[i] -= abertura;
+        Ytiro[i] -= abertura ;
       if (i == 2)
         Ytiro[i] += abertura;
     }
@@ -319,6 +319,7 @@ function draw() {
       rect (Xtiro[i], Ytiro[i], 10, 10, 5); 
     pop();
   }
+  abertura++;
   contTiros++;
   
 }
@@ -356,6 +357,7 @@ function mouseClicked(){
     Ytiro[1] = yEsping - 10; //Setar na arma
     Ytiro[2] = yEsping - 10;
      
+    abertura = 1;
     contTiros = 0;
     balas--;
    }
