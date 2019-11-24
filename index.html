@@ -299,8 +299,8 @@ function draw() {
     }
     
     if (Xtiro[i] > 5000){ // --------------------          ----------------------------     Checar esse limite
-       Xtiro[i] = xEspingarda + 76;      //----------            ----------------------      e setar em relação a arma
-       Ytiro[i] = yEspingarda + 10;
+       Xtiro[i] = xEsping + 76;      //----------            ----------------------      e setar em relação a arma
+       Ytiro[i] = yEsping + 10;
     }
     push(); //Estiliza a bala
       rectMode (CENTER);
@@ -336,13 +336,13 @@ function mouseClicked(){
  if (arma == 1 && balas >= 3){ //Tá com a espingarda e tem munição
    
    if (contTiros > cadencia){//Disparo
-    Xtiro[0] = xEspingarda + 76;
-    Xtiro[1] = xEspingarda + 76; //Setar na arma
-    Xtiro[2] = xEspingarda + 76;
+    Xtiro[0] = xEsping + 76;
+    Xtiro[1] = xEsping + 76; //Setar na arma
+    Xtiro[2] = xEsping + 76;
 
-    Ytiro[0] = yEspingarda + 10;
-    Ytiro[1] = yEspingarda + 10; //Setar na arma
-    Ytiro[2] = yEspingarda + 10;
+    Ytiro[0] = yEsping + 10;
+    Ytiro[1] = yEsping + 10; //Setar na arma
+    Ytiro[2] = yEsping + 10;
      
     Xtiro[0] += velocTiro;
     Xtiro[1] += velocTiro;
