@@ -24,8 +24,15 @@
     var quantTiros = 3, abertura = 10, cadencia = 30, velocTiro = 50, contTiros = 0;
     var Xtiro = [3], Ytiro = [3];
     
+    Xtiro[0] = 0;
+    Xtiro[1] = 0;
+    Xtiro[2] = 0;
+
+    Ytiro[0] = 0;
+    Ytiro[1] = 0;
+    Ytiro[2] = 0;
+   
     var i;
-    
     var angulo;
     
     var Jog_Frente = [];
@@ -299,8 +306,8 @@ function draw() {
     }
     
     if (Xtiro[i] > 5000){ // --------------------          ----------------------------     Checar esse limite
-       Xtiro[i] = xEsping + 76;      //----------            ----------------------      e setar em relação a arma
-       Ytiro[i] = yEsping + 10;
+       Xtiro[i] = 0;      //----------            ----------------------      e setar em relação a arma
+       Ytiro[i] = 0;
     }
     push(); //Estiliza a bala
       rectMode (CENTER);
