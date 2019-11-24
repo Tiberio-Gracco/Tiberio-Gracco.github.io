@@ -316,7 +316,7 @@ function draw() {
     }
     
     
-    if (Xtiro[i] > xEsping + 800 || Xtiro[i] < xEsping - 800){ // --------------------          ----------------------------     Checar esse limite
+    if (Xtiro[i] > xEsping + 800 || Xtiro[i] < xEsping - 700){ // --------------------          ----------------------------     Checar esse limite
        Xtiro[i] = -10;      //----------            ----------------------      e setar em relação a arma
        Ytiro[i] = -10;
     }
@@ -368,7 +368,7 @@ function mouseClicked(){
      
     abertura = 1;
     contTiros = 0;
-    balas--;
+    balas -= 3;
    }
  }
 }
