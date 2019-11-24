@@ -24,14 +24,15 @@
     var quantTiros = 3, abertura = 10, cadencia = 30, velocTiro = 60, contTiros = 0;
     var Xtiro = [3], Ytiro = [3];
     var xAlvo, yAlvo;
+    var direcao; //Indica a direçao do mouse (0: Direita, 1: Esquerda)
     
-    Xtiro[0] = 0;
-    Xtiro[1] = 0;
-    Xtiro[2] = 0;
+    Xtiro[0] = -10;
+    Xtiro[1] = -10;
+    Xtiro[2] = -10;
 
-    Ytiro[0] = 0;
-    Ytiro[1] = 0;
-    Ytiro[2] = 0;
+    Ytiro[0] = -10;
+    Ytiro[1] = -10;
+    Ytiro[2] = -10;
    
     var i;
     var angulo;
@@ -106,7 +107,7 @@ function preload(){
     
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate (30);    // --------------------     -------------------- Olhar isso depois
+  //frameRate (30);    // --------------------     -------------------- Olhar isso depois
   aux = Jog_Frente[0];
   aux2 = Ind_Frente[0];
 }
@@ -259,6 +260,7 @@ function draw() {
   
   
   if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
+    direcao = 0;
     push();
     if (arma == 0){ // Exibe o sabre
       translate (xSabre, ySabre);
@@ -274,6 +276,7 @@ function draw() {
     pop();
   }
   if (angulo < -HALF_PI || angulo > HALF_PI){//Mouse na esquerda
+    direcao = 1;
     text ("Na esquerda", 500, 100);
     push();
     
@@ -298,18 +301,24 @@ function draw() {
   
   for (i = 0; i < quantTiros; i++){
     if (Xtiro[i] != 0){// Trajeto da bala
-      Xtiro[i] += velocTiro;
-      Ytiro[i] = trajetoBala(xEsping, yEsping, xAlvo, yAlvo, Xtiro[i]);
       
-      if (i == 0)
-        Ytiro[i] -= abertura ;
-      if (i == 2)
-        Ytiro[i] += abertura;
+      if (direcao == 0){//Mouse p/ Direita
+        Xtiro[i] += velocTiro;
+      else              //Mouse p/ Esquerda
+        Xtiro[i] -= velocTiro;
+        
+        Ytiro[i] = trajetoBala(xEsping, yEsping, xAlvo, yAlvo, Xtiro[i]);
+      
+        if (i == 0)
+          Ytiro[i] -= abertura ;
+        if (i == 2)
+          Ytiro[i] += abertura; 
     }
     
-    if (Xtiro[i] > 5000){ // --------------------          ----------------------------     Checar esse limite
-       Xtiro[i] = 0;      //----------            ----------------------      e setar em relação a arma
-       Ytiro[i] = 0;
+    
+    if (Xtiro[i] > 1000){ // --------------------          ----------------------------     Checar esse limite
+       Xtiro[i] = -10;      //----------            ----------------------      e setar em relação a arma
+       Ytiro[i] = -10;
     }
     push(); //Estiliza a bala
       rectMode (CENTER);
