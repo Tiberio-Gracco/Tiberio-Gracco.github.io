@@ -15,12 +15,16 @@
     var balas = 15, cartucho;
     var madeira = 0, tora;
     
+    //ARMAS
     var espingarda, sabre;
     var xSabre, ySabre;
     var xEsping, yEsping;
     
     var arma = 0; //Define qual arma vai usar (0 para Sabre, 1 para Espingarda)
+    var quantTiros = 3, abertura = 10, cadencia = 30, velocTiro = 50, contTiros = 0;
+    var Xtiro = [3], Ytiro = [3];
     
+    var i;
     
     var angulo;
     
@@ -94,6 +98,7 @@ function preload(){
     
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  frameRate (30);    // --------------------     -------------------- Olhar isso depois
   aux = Jog_Frente[0];
   aux2 = Ind_Frente[0];
 }
@@ -280,6 +285,33 @@ function draw() {
     pop();
   }
   
+  
+  
+  
+  for (i = 0; i < quantTiros; i++){
+    if (Xtiro[i] != 0){// Trajeto da bala
+      Xtiro[i] += velocTiro;
+      
+      if (i == 0)
+        Ytiro[i] -= abertura;
+      if (i == 2)
+        Ytiro[i] += abertura;
+    }
+    
+    if (Xtiro[i] > 5000){ // --------------------          ----------------------------     Checar esse limite
+       Xtiro[i] = 0;      // -------------------------            ----------------------      e setar em relação a arma
+       Ytiro[i] = 70;
+    }
+    push(); //Estiliza a bala
+      rectMode (CENTER);
+      fill (255, 255, 0);
+      stroke (255, 100, 0);
+      strokeWeight (4);
+      rect (Xtiro[i], Ytiro[i], 10, 10, 5); 
+    pop();
+  }
+  contTiros++;
+  
 }
     
 function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
@@ -301,8 +333,25 @@ function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
     
     
 function mouseClicked(){
- if (balas > 0)
-   balas--;
+ if (arma == 1 && balas >= 3){ //Tá com a espingarda e tem munição
+   
+   if (contTiros > cadencia){//Disparo
+    Xtiro[0] = 0;
+    Xtiro[1] = 0; //Setar na arma
+    Xtiro[2] = 0;
+
+    Ytiro[0] = 70;
+    Ytiro[1] = 70; //Setar na arma
+    Ytiro[2] = 70;
+     
+    Xtiro[0] += velocTiro;
+    Xtiro[1] += velocTiro;
+    Xtiro[2] += velocTiro;
+    
+    contTiros = 0;
+    balas -= 3;
+   }
+ }
 }
     
 function keyPressed (){
