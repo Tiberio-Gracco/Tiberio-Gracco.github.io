@@ -300,7 +300,7 @@ function draw() {
   
   
   for (i = 0; i < quantTiros; i++){
-    if (Xtiro[i] != 0){// Trajeto da bala
+    if (Xtiro[i] != -10){// Trajeto da bala
       
       if (direcao == 0)//Mouse p/ Direita
         Xtiro[i] += velocTiro;
@@ -316,7 +316,7 @@ function draw() {
     }
     
     
-    if (Xtiro[i] > 1000){ // --------------------          ----------------------------     Checar esse limite
+    if (Xtiro[i] > 2000){ // --------------------          ----------------------------     Checar esse limite
        Xtiro[i] = -10;      //----------            ----------------------      e setar em relação a arma
        Ytiro[i] = -10;
     }
