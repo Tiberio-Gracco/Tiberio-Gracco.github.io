@@ -263,16 +263,17 @@ function draw() {
   if (angulo < -HALF_PI || angulo > HALF_PI){//Mouse na esquerda
     text ("Na esquerda", 500, 100);
     push();
-    scale (1,-1);
     
     if (arma == 0){ // Exibe o sabre
       translate (xSabre, ySabre);
       rotate(angulo);
+      scale (1,-1);
       image (sabre, 5, -10);
     }
     else{ // Exibe a espingarda
       translate (xEsping, yEsping);
       rotate(angulo);
+      scale (1,-1);
       image (espingarda, -20, -19);
     }
     
