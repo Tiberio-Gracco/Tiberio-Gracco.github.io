@@ -14,7 +14,7 @@
     var aux, dist, aux2;
     
     var vida = 100, coracao; //                 ------------------------------------------ Ajeitar a vida
-    var balas = 15, cartucho;
+    var balas = 15, cartucho;                                 //                           E as balas
     var madeira = 0, tora;
     
     //ARMAS
@@ -299,7 +299,7 @@ function draw() {
   
   
   
-  
+  //TIRO
   for (i = 0; i < quantTiros; i++){
     if (Xtiro[i] != -10){// Trajeto da bala
       
@@ -310,7 +310,7 @@ function draw() {
         
       Ytiro[i] = trajetoBala(xEsping, yEsping, xAlvo, yAlvo, Xtiro[i]);
       
-      if (i == 0)
+      if (i == 0) // Efeito de dispersão das balas da espingarda
         Ytiro[i] -= abertura ;
       if (i == 2)
         Ytiro[i] += abertura; 
@@ -321,7 +321,7 @@ function draw() {
       Xtiro[i] = -10;      
       Ytiro[i] = -10;
     }
-    if (Ytiro[i] > yEsping + 400 || Ytiro[i] < yEsping - 400){
+    if (Ytiro[i] > yEsping + alcance || Ytiro[i] < yEsping - alcance){
       Xtiro[i] = -10;      
       Ytiro[i] = -10;  
     }
