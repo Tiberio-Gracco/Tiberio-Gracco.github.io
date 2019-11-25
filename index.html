@@ -339,6 +339,10 @@ function draw() {
   
   
   
+  text ("x: " + x + ", y: " + y, x, y - 10);
+  text ("x: " + x2 + ", y: " + y2, x2, y2 - 10);
+  
+  
   for (i = 0; i < quantTiros; i++){
     if (colisao(x2, y2, 33, 77, Xtiro[i], Ytiro[i], 10, 10) == true) //Se o indio for atingido por um tiro de espingarda
       vida_Ind -= danoEsping;
