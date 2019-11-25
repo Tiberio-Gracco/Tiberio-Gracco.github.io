@@ -327,20 +327,17 @@ function draw() {
     }
     
     push(); //Estiliza a bala
-      rectMode (CENTER);
+      //rectMode (CENTER);
       fill (255, 255, 0);
       stroke (255, 100, 0);
       strokeWeight (4);
-      rect (Xtiro[i], Ytiro[i], 10, 10, 5); 
+      ellipse (Xtiro[i], Ytiro[i], 10, 10); 
     pop();
   }
   abertura += 3;
   contTiros++;
   
   
-  fill ("black");
-  text ("x: " + x + ", y: " + y, x, y - 20);
-  text ("x: " + x2 + ", y: " + y2, x2, y2 - 20);
   
   
   for (i = 0; i < quantTiros; i++){
@@ -352,7 +349,14 @@ function draw() {
   rect (x2, y2 - 10, 70, 10);
   fill ("green");
   rect (x2, y2 - 10, vida_Ind, 10);
+ 
   
+  
+  
+  //COORD. DOS PERS.
+  fill ("black");
+  text ("x: " + x + ", y: " + y, x, y - 20);
+  text ("x: " + x2 + ", y: " + y2, x2, y2 - 20);
 }
     
 function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
