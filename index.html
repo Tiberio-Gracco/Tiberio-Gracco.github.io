@@ -327,11 +327,11 @@ function draw() {
     }
     
     push(); //Estiliza a bala
-      //rectMode (CENTER);
+      rectMode (CENTER);
       fill (255, 255, 0);
       stroke (255, 100, 0);
       strokeWeight (4);
-      ellipse (Xtiro[i], Ytiro[i], 10, 10); 
+      rect (Xtiro[i], Ytiro[i], 10, 10); 
     pop();
   }
   abertura += 3;
@@ -341,7 +341,7 @@ function draw() {
   
   
   for (i = 0; i < quantTiros; i++){
-    if (colisao(x2, y2, 33, 77, Xtiro[i], Ytiro[i], 10, 10) == true) //Se o indio for atingido por um tiro de espingarda
+    if (colisao(x2, y2, 33, 77, Xtiro[i] - 5, Ytiro[i] - 5, 10, 10) == true) //Se o indio for atingido por um tiro de espingarda
       vida_Ind -= danoEsping;
   }
   
