@@ -38,6 +38,9 @@
     Ytiro[1] = -10;
     Ytiro[2] = -10;
    
+    var j;
+    
+    
     var i;
     var angulo;
     
@@ -409,10 +412,13 @@ function draw() {
   
   
   
-  //COORD. DOS PERS.
+  //COORDENADAS DOS PERSONAGENS
   fill ("black");
   text ("x: " + x + ", y: " + y, x, y - 20);
   text ("x: " + x2 + ", y: " + y2, x2, y2 - 20);
+  
+  text ("j: " + j, 500, 20);
+  
 }
     
 function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
@@ -433,7 +439,8 @@ function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
 }
     
     
-function mouseClicked(){
+function mouseClicked(){ 
+  
  if (arma == 1 && balas >= 3){ //Tá com a espingarda e tem munição
    
    if (contTiros > cadencia){//Disparo
@@ -453,6 +460,25 @@ function mouseClicked(){
     balas -= 3;
    }
  }
+  
+  
+ if (arma == 0){ //Tá com o Machado
+   angulo = PI/4;
+   
+   if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
+    
+     for (j = 0; j < 10; j++){
+      angulo = angulo - (PI/20)
+      push();
+      //Exibe o Machado
+      translate (xMachado, yMachado);
+      rotate(angulo);
+      image (machado, 5, -31);
+      pop();
+     }
+   }
+   
+ } 
 }  
     
 function keyPressed (){
