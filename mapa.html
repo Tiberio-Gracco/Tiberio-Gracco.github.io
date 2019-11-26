@@ -61,8 +61,9 @@ function draw() {
       }
       if (map[i][j] == 3) {
         for(x=0;x<5;x++){
-        image(agua[x]);
+        rectMode(CENTER);
         image(agua[x%5],j * tileSize, i * tileSize, tileSize, tileSize);
+          
         /*image(walk[pose%9], x, pulo_posicao_y_jogador,150, 175);*/
         
         
