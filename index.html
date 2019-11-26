@@ -219,11 +219,14 @@ function draw() {
     image (Ind_Frente[0], x2, y2);
   
   
-  
-  if (dist < 100){ //Área de ataque do Índio
+  if (dist < 100 && vida_Ind > 0){ //Área de ataque do Índio
     vida = vida - (1/5);
   }
   
+  
+  
+  
+  //HUD
   image (coracao, 20, 20);
   image (cartucho, 20, 62);
   image (tora, 20, 104);
