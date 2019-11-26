@@ -32,6 +32,8 @@ var agua=[];
 var tileSize=50;
 var chao = 552-tileSize;
 var pulando = false;
+var cont=0;
+var deley=5;
 function preload(){
 agua[0]= loadImage('Imagens/agua0.png');
 agua[1]= loadImage('Imagens/agua1.png');
@@ -49,23 +51,30 @@ function draw() {
   fill(255, 255, 0);
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
-      if (map[i][j] == 1) {
+      if (map[i][j] == 1) {//imagensda grama
         rectMode(CENTER);
         fill("yellow");
         rect(j * tileSize, i * tileSize, tileSize, tileSize);
       }
       /*o 1 no mapa são as bordas do mapa o 2 são as arvores  */
-      if (map[i][j] == 2) {
+      if (map[i][j] == 2) {//imagem das arvores.
         rectMode(CENTER);
         ellipse(j * tileSize, i * tileSize, tileSize, tileSize);
       }
-      if (map[i][j] == 3) {
+      if (map[i][j] == 3) {//imagem da agua.
         for(x=0;x<5;x++){
         rectMode(CENTER);
         image(agua[x%5],j * tileSize, i * tileSize, tileSize, tileSize);
-          
-        /*image(walk[pose%9], x, pulo_posicao_y_jogador,150, 175);*/
-        
+        /*if (cont == delay){
+          posicao++;
+          cont = 0;
+        }
+        else
+          cont++;
+        }
+        if (posicao > 3)
+          posicao = 0;
+        */
         
         }
       }
