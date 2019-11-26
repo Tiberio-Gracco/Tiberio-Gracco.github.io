@@ -18,9 +18,10 @@
     var madeira = 0, tora;
     
     //ARMAS
-    var espingarda, sabre;
+    var espingarda, sabre, machado;
     var xSabre, ySabre;
     var xEsping, yEsping;
+    var xMachado, yMachado;
     
     var arma = 0; //Define qual arma vai usar (0 para Sabre, 1 para Espingarda)
     var quantTiros = 3, abertura = 10, cadencia = 30, velocTiro = 60, contTiros = 0, alcance = 400;
@@ -109,6 +110,7 @@ function preload(){
   //ARMAS
   espingarda = loadImage ("Imagens/Espingarda.png");
   sabre = loadImage ("Imagens/Sabre2.png");
+  machado = loadImage ("Imagens/Machado.png");
   
 }
     
@@ -260,23 +262,44 @@ function draw() {
   text (balas, 80, 90);
   pop();
   
+  
+  
+  
+  
+  
+  
+  //EXIBE AS ARMAS
   xSabre = x + 18;
   ySabre = y + 48;
   
   xEsping = x + 24;
   yEsping = y + 51;
   
-  angulo = atan2 (mouseY - ySabre, mouseX - xSabre);
+  xMachado = x + 21;
+  yMachado = y + 21;
+  
+  //angulo = atan2 (mouseY - ySabre, mouseX - xSabre);
+  angulo = atan2 (mouseY - yMachado, mouseX - xMachado);
   
   
   if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
     direcao = 0;
     push();
+/*    
     if (arma == 0){ // Exibe o sabre
       translate (xSabre, ySabre);
       rotate(angulo);
       image (sabre, 5, -10);
     }
+*/    
+    
+    if (arma == 0){ // Exibe o Machado
+      translate (xMachado, yMachado);
+      rotate(angulo);
+      image (machado, 5, 0);
+    }
+    
+    
     else{ // Exibe a espingarda
       translate (xEsping, yEsping);
       rotate(angulo);
@@ -288,13 +311,22 @@ function draw() {
   if (angulo < -HALF_PI || angulo > HALF_PI){//Mouse na esquerda
     direcao = 1;
     push();
-    
+/*    
     if (arma == 0){ // Exibe o sabre
       translate (xSabre, ySabre);
       rotate(angulo);
       scale (1,-1);
       image (sabre, 5, -10);
     }
+*/    
+    if (arma == 0){ // Exibe o Machado
+      translate (xMachado, yMachado);
+      rotate(angulo);
+      scale (1, -1);
+      image (machado, 5, 0);
+    }
+    
+    
     else{ // Exibe a espingarda
       translate (xEsping, yEsping);
       rotate(angulo);
@@ -421,7 +453,7 @@ function mouseClicked(){
     balas -= 3;
    }
  }
-}
+  
     
 function keyPressed (){
  if (key == 'q'){ //Altera a arma
