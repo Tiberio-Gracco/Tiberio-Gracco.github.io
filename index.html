@@ -40,7 +40,7 @@
    
     var golpe = false; 
     var j = 0;
-    var ang = 3.14159 / 4;
+    var ang = Math.PI / 4;
     
     var i;
     var angulo;
@@ -386,7 +386,7 @@ function draw() {
   //GOLPE COM MACHADO
   //if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
   if (golpe == true && j > 5){
-      ang = ang - (3.14159/20)
+      ang = ang - (Math.PI/20)
       push();
       //Exibe o Machado
       translate (xMachado, yMachado);
@@ -397,7 +397,7 @@ function draw() {
    }
   j++;
   
-  if (ang < -3.14159/4)
+  if (ang < Math.PI /4)
     golpe = false;
   
   
