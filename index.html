@@ -29,6 +29,7 @@
     var xAlvo, yAlvo;
     var direcao; //Indica a direçao do mouse (0: Direita, 1: Esquerda)
     var danoEsping = 10;
+    var danoMachado = 5;
     
     Xtiro[0] = -10;
     Xtiro[1] = -10;
@@ -407,10 +408,7 @@ function draw() {
  
   }
 
-//  if (ang > Math.PI /2)
-//    golpe = false;
-  
-  
+
   
   
   
@@ -424,6 +422,12 @@ function draw() {
     }
   }
   
+  if (golpe == true && colisao (x2, y2, 33, 77, x, y, 33, 77) == true){             // Alcance do machado, colocar
+    if (vida_Ind - danoMachado >= 0)//Não deixa a vida do Indio ficar negativa
+        vida_Ind -= danoMachado;
+      else
+        vida_Ind = 0;
+  }
   
   
   if (vida_Ind > 0){
