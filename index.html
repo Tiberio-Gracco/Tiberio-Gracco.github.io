@@ -340,15 +340,20 @@ function draw() {
   
   
   
+ //DANO
   for (i = 0; i < quantTiros; i++){
-    if (colisao(x2, y2, 33, 77, Xtiro[i] - 5, Ytiro[i] - 5, 10, 10) == true) //Se o indio for atingido por um tiro de espingarda
-      vida_Ind -= danoEsping;
+    if (colisao(x2, y2, 33, 77, Xtiro[i] - 5, Ytiro[i] - 5, 10, 10) == true){ //Se o indio for atingido por um tiro de espingarda
+      if (vida_Ind - danoEsping >= 0)//Não deixa a vida do Indio ficar negativa
+        vida_Ind -= danoEsping;
+      else
+        vida_Ind = 0;
+    }
   }
   
   fill ("white");
-  rect (x2, y2 - 10, 70, 10);
+  rect (x2 - 19, y2 - 15, 70, 6);
   fill ("green");
-  rect (x2, y2 - 10, vida_Ind, 10);
+  rect (x2 - 19, y2 - 15, vida_Ind, 6);
  
   
   
