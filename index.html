@@ -38,8 +38,8 @@
     Ytiro[1] = -10;
     Ytiro[2] = -10;
    
+    var golpe = false; 
     var j;
-    
     
     var i;
     var angulo;
@@ -382,6 +382,26 @@ function draw() {
   
   
   
+  //GOLPE COM MACHADO
+  //if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
+  if (golpe == true && j > 5){
+      angulo = angulo - (PI/20)
+      push();
+      //Exibe o Machado
+      translate (xMachado, yMachado);
+      rotate(angulo);
+      image (machado, 5, -31);
+      pop();
+      j = 0;
+   }
+  j++;
+  
+  if (angulo == -PI/4)
+    golpe = false;
+  
+  
+  
+  
   
   //DANO
   for (i = 0; i < quantTiros; i++){
@@ -462,23 +482,9 @@ function mouseClicked(){
  }
   
   
- if (arma == 0){ //Tá com o Machado
-   angulo = PI/4;
-   
-   if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
-    
-     for (j = 0; j < 500; j++){
-      angulo = angulo - (PI/1000)
-      push();
-      //Exibe o Machado
-      translate (xMachado, yMachado);
-      rotate(angulo);
-      image (machado, 5, -31);
-      pop();
-     }
-   }
-   
- } 
+ if (arma == 0) //Tá com o Machado
+   golpe = true;   
+
 }  
     
 function keyPressed (){
