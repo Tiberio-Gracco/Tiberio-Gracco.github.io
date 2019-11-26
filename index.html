@@ -383,6 +383,9 @@ function draw() {
   
   
   //GOLPE COM MACHADO
+  if (ang > Math.PI/2 || ang < -3*Math.PI/2)
+    golpe = false;
+  
   if (direcao == 0 && golpe == true){//Mouse na direita
       ang = ang + (Math.PI/6);
       push();
@@ -391,10 +394,9 @@ function draw() {
       rotate(ang);
       image (machado, 5, -31);
       pop();
-    
   }
-/*  if (direcao == 1 && golpe == true){//Mouse na esquerda
-      ang = ang - (Math.PI/6)
+  if (direcao == 1 && golpe == true){//Mouse na esquerda
+      ang = ang - (Math.PI/6);
       push();
       //Exibe o Machado
       translate (xMachado, yMachado);
@@ -404,9 +406,9 @@ function draw() {
       pop();
  
   }
-*/
-  if (ang > Math.PI /2)
-    golpe = false;
+
+//  if (ang > Math.PI /2)
+//    golpe = false;
   
   
   
@@ -493,7 +495,7 @@ function mouseClicked(){
   
  if (arma == 0){ //Tá com o Machado
    golpe = true;   
-   ang = -Math.PI / 4;
+   ang = -Math.PI / 2;
  }
 }  
     
