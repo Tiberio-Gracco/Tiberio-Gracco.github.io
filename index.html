@@ -40,6 +40,7 @@
    
     var golpe = false; 
     var j = 0;
+    var ang = PI/4;
     
     var i;
     var angulo;
@@ -322,13 +323,13 @@ function draw() {
       image (sabre, 5, -10);
     }
 */    
-    if (arma == 0){ // Exibe o Machado
+/*    if (arma == 0){ // Exibe o Machado
       translate (xMachado, yMachado);
       rotate(angulo);
       scale (1, -1);
       image (machado, 5, 0);
     }
-    
+*/    
     
     else{ // Exibe a espingarda
       translate (xEsping, yEsping);
@@ -385,18 +386,18 @@ function draw() {
   //GOLPE COM MACHADO
   //if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
   if (golpe == true && j > 5){
-      angulo = angulo - (PI/20)
+      ang = ang - (PI/20)
       push();
       //Exibe o Machado
       translate (xMachado, yMachado);
-      rotate(angulo);
+      rotate(ang);
       image (machado, 5, -31);
       pop();
       j = 0;
    }
   j++;
   
-  if (angulo == -PI/4)
+  if (ang < -PI/4)
     golpe = false;
   
   
@@ -438,6 +439,7 @@ function draw() {
   text ("x: " + x2 + ", y: " + y2, x2, y2 - 20);
   
   text ("j: " + j, 500, 20);
+  text ("golpe: " + golpe, 500, 30);
   
 }
     
