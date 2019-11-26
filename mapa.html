@@ -64,17 +64,16 @@ function draw() {
       if (map[i][j] == 3) {//imagem da agua.
         for(x=0;x<5;x++){
         rectMode(CENTER);
-        image(agua[x%5],j * tileSize, i * tileSize, tileSize, tileSize);
-        /*if (cont == delay){
-          posicao++;
+        image(agua[x],j * tileSize, i * tileSize, tileSize, tileSize);
+        if (cont == 5){
+          x++;
           cont = 0;
         }
         else
-          cont++;
+          x++;
         }
-        if (posicao > 3)
-          posicao = 0;
-        */
+        if (x > 4)
+          x = 0;
         
         }
       }
