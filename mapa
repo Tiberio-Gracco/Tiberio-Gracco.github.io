@@ -41,8 +41,7 @@ agua[4]= loadImage('imagens/agua4.png');
 }
 function setup() {
   createCanvas(1700, 800);
-  /*obs:testado as imagens da agua. */
-  image(agua, 0, 0);
+  
 }
 function draw() {
   background(220);
@@ -63,6 +62,10 @@ function draw() {
       if (map[i][j] == 3) {
         for(x=0;x<5;x++){
         image(agua[x]);
+        image(agua[pose%5],j * tileSize, i * tileSize, tileSize, tileSize);
+        /*image(walk[pose%9], x, pulo_posicao_y_jogador,150, 175);*/
+        
+        
         }
       }
     } 
