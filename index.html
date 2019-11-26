@@ -49,6 +49,8 @@
     var Ind_Direita = [];
     var Ind_Esquerda = [];
     var Ind_Tras = [];
+    
+    var dead;
 
     
 function preload(){
@@ -97,6 +99,8 @@ function preload(){
   Ind_Tras[1] = loadImage("Imagens/Índio - Trás1.png");
   Ind_Tras[2] = loadImage("Imagens/Índio - Trás2.png");
   Ind_Tras[3] = loadImage("Imagens/Índio - Trás3.png");
+  
+  dead = loadImage ("Imagens/WASTED.gif");
   
   coracao = loadImage ("Imagens/Vida.png");
   cartucho = loadImage ("Imagens/Munição 3.png");
@@ -364,9 +368,7 @@ function draw() {
     rect (x2 - 14, y2 - 10, vida_Ind, 6);
   }
   else{
-    fill ("red");
-    textSize (14);
-    text ("Dead", x2 - 14, y2 - 10);
+    image (dead, x2, y2);
   }
   
   
