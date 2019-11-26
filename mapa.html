@@ -67,18 +67,19 @@ function draw() {
         imageMode(CENTER);
         image(agua[x],j * tileSize, i * tileSize, tileSize, tileSize);
         }
-        if (cont == 5){
-          k++;
-          cont = 0;
-        }
-        else
-          cont++;
-        }
-        if (k > 4){
-          k = 0;
-        }
         }
       }
+    cont++
+      if(cont==51){
+        k++
+      cont=0
+      }
+  else{
+     cont++
+     }
+  if(k>4){
+  k=0;
+  }
     }
 
     alert("fsdvglajkbvaopidfag");
