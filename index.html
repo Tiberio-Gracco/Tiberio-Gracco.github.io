@@ -29,7 +29,7 @@
     var xAlvo, yAlvo;
     var direcao; //Indica a direçao do mouse (0: Direita, 1: Esquerda)
     var danoEsping = 10;
-    var danoMachado = 5;
+    var danoMachado = 1;
     
     Xtiro[0] = -10;
     Xtiro[1] = -10;
@@ -422,10 +422,10 @@ function draw() {
     }
   }
   
-  if (golpe == true && dist < 100){                               // Alcance do machado, colocar
+  if (dano == true && dist < 70){                               // Alcance do machado, colocar
     if (vida_Ind - danoMachado >= 0)//Não deixa a vida do Indio ficar negativa
         vida_Ind -= danoMachado;
-      else
+    else
         vida_Ind = 0;
   }
   
@@ -440,10 +440,6 @@ function draw() {
   else{
     image (dead, x2, y2, 46, 60);
   }
-  
-  
-  
- 
   
   
   
@@ -498,7 +494,7 @@ function mouseClicked(){
  }
   
  if (arma == 0){ //Tá com o Machado
-   golpe = true;   
+   golpe = true;
    ang = -Math.PI / 2;
  }
 }  
