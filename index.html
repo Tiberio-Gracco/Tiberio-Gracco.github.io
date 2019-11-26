@@ -386,19 +386,17 @@ function draw() {
   
   //GOLPE COM MACHADO
   //if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
-  if (golpe == true && j > 1){
-      ang = ang + (Math.PI/20)
+  if (golpe == true){
+      ang = ang + (Math.PI/6)
       push();
       //Exibe o Machado
       translate (xMachado, yMachado);
       rotate(ang);
       image (machado, 5, -31);
       pop();
-      j = 0;
    }
-  j++;
   
-  if (ang > Math.PI /4)
+  if (ang > Math.PI /2)
     golpe = false;
   
   
@@ -439,11 +437,9 @@ function draw() {
   text ("x: " + x + ", y: " + y, x, y - 20);
   text ("x: " + x2 + ", y: " + y2, x2, y2 - 20);
   
-  text ("j: " + j, 500, 20);
-  text ("golpe: " + golpe, 500, 30);
   
-  fill ("black");
-    text ("angulo: " + angulo, 20, 300);
+  text ("golpe: " + golpe, 500, 30);
+  text ("angulo: " + angulo, 20, 300);
   
 }
     
