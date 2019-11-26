@@ -422,7 +422,7 @@ function draw() {
     }
   }
   
-  if (golpe == true && colisao (x2, y2, 33, 77, x, y, 33, 77) == true){             // Alcance do machado, colocar
+  if (golpe == true && dist < 100){                               // Alcance do machado, colocar
     if (vida_Ind - danoMachado >= 0)//Não deixa a vida do Indio ficar negativa
         vida_Ind -= danoMachado;
       else
