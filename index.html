@@ -185,6 +185,7 @@ function draw() {
     noFill();
     ellipse (x2, y2, 400, 400); //área de perseguição
     ellipse (x2, y2, 200, 200); //área de ataque
+  
     image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
     
     dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
@@ -373,7 +374,7 @@ function draw() {
       fill (255, 255, 0);
       stroke (255, 100, 0);
       strokeWeight (4);
-      rect (Xtiro[i], Ytiro[i], 10, 10); 
+      rect (Xtiro[i], Ytiro[i], 10, 10, 5); 
     pop();
   }
   abertura += 3;
