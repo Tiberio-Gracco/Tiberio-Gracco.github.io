@@ -294,23 +294,22 @@ function draw() {
       rotate(angulo);
       image (sabre, 5, -10);
     }
-*/    
-    
+*/      
     if (arma == 0 && golpe == false){ // Exibe o Machado
       translate (xMachado, yMachado);
       rotate(angulo);
       image (machado, 5, -31);
     }
     
-    
-    else{ // Exibe a espingarda
+    if (arma == 1){ // Exibe a espingarda
       translate (xEsping, yEsping);
       rotate(angulo);
       image (espingarda, -20, -19);
     }
-    
     pop();
   }
+  
+  
   if (angulo < -HALF_PI || angulo > HALF_PI){//Mouse na esquerda
     direcao = 1;
     push();
@@ -322,7 +321,6 @@ function draw() {
       image (sabre, 5, -10);
     }
 */    
-  
     if (arma == 0 && golpe == false){ // Exibe o Machado
       translate (xMachado, yMachado);
       rotate(angulo);
@@ -337,7 +335,6 @@ function draw() {
       scale (1,-1);
       image (espingarda, -20, -19);
     }
-    
     pop();
   }
   
@@ -387,18 +384,16 @@ function draw() {
   
   //GOLPE COM MACHADO
   if (direcao == 0 && golpe == true){//Mouse na direita
-    
-    /*
-      ang = ang + (Math.PI/6)
+      ang = ang + (Math.PI/6);
       push();
       //Exibe o Machado
       translate (xMachado, yMachado);
       rotate(ang);
       image (machado, 5, -31);
       pop();
-    */
+    
   }
-  if (direcao == 1 && golpe == true){//Mouse na esquerda
+/*  if (direcao == 1 && golpe == true){//Mouse na esquerda
       ang = ang - (Math.PI/6)
       push();
       //Exibe o Machado
@@ -407,7 +402,7 @@ function draw() {
       scale (1, -1);
       image (machado, 5, -31);
       pop();
-    
+ */
   }
   if (ang > Math.PI /2)
     golpe = false;
@@ -475,7 +470,6 @@ function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
     
     
 function mouseClicked(){ 
-  
  if (arma == 1 && balas >= 3){ //Tá com a espingarda e tem munição
    
    if (contTiros > cadencia){//Disparo
@@ -496,10 +490,9 @@ function mouseClicked(){
    }
  }
   
-  
  if (arma == 0){ //Tá com o Machado
    golpe = true;   
-   ang = -Math.PI / 2;
+   ang = -Math.PI / 4;
  }
 }  
     
