@@ -34,6 +34,7 @@ var chao = 552-tileSize;
 var pulando = false;
 var cont=0;
 var deley=5;
+    var k=0;
 function preload(){
 agua[0]= loadImage('Imagens/agua0.png');
 agua[1]= loadImage('Imagens/agua1.png');
@@ -66,14 +67,14 @@ function draw() {
         rectMode(CENTER);
         image(agua[x],j * tileSize, i * tileSize, tileSize, tileSize);
         if (cont == 5){
-          x++;
+          k++;
           cont = 0;
         }
         else
           cont++;
         }
-        if (x > 4){
-          x = 0;
+        if (k > 4){
+          k = 0;
         }
         }
       }
