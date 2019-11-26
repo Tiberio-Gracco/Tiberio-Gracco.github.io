@@ -181,7 +181,7 @@ function draw() {
       
      
   
-    if (dist < 200){ // Área de Ataque do Indio
+    if (dist <= 200 && vida_Ind > 0){ // Área de Ataque do Indio
       
       if (cont2 == delay){//Animação da Sprite do Índio
         posicao2++;
@@ -214,7 +214,8 @@ function draw() {
       
       image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
     }
-  else
+  
+  if (dist > 200 && vida_Ind > 0)
     image (Ind_Frente[0], x2, y2);
   
   
@@ -340,7 +341,7 @@ function draw() {
   
   
   
- //DANO
+  //DANO
   for (i = 0; i < quantTiros; i++){
     if (colisao(x2, y2, 33, 77, Xtiro[i] - 5, Ytiro[i] - 5, 10, 10) == true){ //Se o indio for atingido por um tiro de espingarda
       if (vida_Ind - danoEsping >= 0)//Não deixa a vida do Indio ficar negativa
@@ -350,11 +351,23 @@ function draw() {
     }
   }
   
-  //Exibe a vida do Indio
-  fill ("white");
-  rect (x2 - 14, y2 - 10, 70, 6);
-  fill ("green");
-  rect (x2 - 14, y2 - 10, vida_Ind, 6);
+  
+  
+  if (vida_Ind > 0){
+    //Exibe a vida do Indio
+    fill ("white");
+    rect (x2 - 14, y2 - 10, 70, 6);
+    fill ("green");
+    rect (x2 - 14, y2 - 10, vida_Ind, 6);
+  }
+  else{
+    fill ("red");
+    textSize (14);
+    text ("Dead", x2 - 14, y2 - 10);
+  }
+  
+  
+  
  
   
   
