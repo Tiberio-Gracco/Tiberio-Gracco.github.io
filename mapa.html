@@ -36,11 +36,19 @@ var cont=0;
 var deley=5;
     var k=0;
 function preload(){
-agua[0]= loadImage('Imagens/agua0.png');
-agua[1]= loadImage('Imagens/agua1.png');
-agua[2]= loadImage('Imagens/agua2.png');
-agua[3]= loadImage('Imagens/agua3.png');
-agua[4]= loadImage('Imagens/agua4.png');
+  agua[0]= loadImage('Imagens/agua0.png');
+  agua[1]= loadImage('Imagens/agua1.png');
+  agua[2]= loadImage('Imagens/agua2.png');
+  agua[3]= loadImage('Imagens/agua3.png');
+  agua[4]= loadImage('Imagens/agua4.png');
+  
+  grama[0]=loadImage('Imagens/grama0.png');
+  grama[1]=loadImage('Imagens/grama1.png');
+  grama[2]=loadImage('Imagens/grama2.png');
+  grama[3]=loadImage('Imagens/grama3.png');
+  grama[4]=loadImage('Imagens/grama5.png');
+  grama[5]=loadImage('Imagens/grama4.png');
+  
 }
 function setup() {
   createCanvas(1700, 800);
@@ -53,9 +61,10 @@ function draw() {
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
       if (map[i][j] == 0) {//imagensda grama
-        rectMode(CENTER);
-        fill("green");
-        rect(j * tileSize, i * tileSize, tileSize, tileSize);
+        for(x=0;x<5;x++){
+        imageMode(CENTER);
+        image(grama[k],j * tileSize, i * tileSize, tileSize, tileSize);
+        }
       }
       if (map[i][j] == 1) {//imagensda grama
         rectMode(CENTER);
