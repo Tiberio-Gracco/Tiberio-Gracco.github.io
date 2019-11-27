@@ -61,16 +61,19 @@ function draw() {
   fill(255, 255, 0);
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
+      
       if (map[i][j] == 1) {//imagensda grama
         rectMode(CENTER);
         fill("yellow");
         rect(j * tileSize, i * tileSize, tileSize, tileSize);
       }
+      
       /*o 1 no mapa são as bordas do mapa o 2 são as arvores  */
       if (map[i][j] == 2) {//imagem das arvores.
-        rectMode(CENTER);
-        ellipse(j * tileSize, i * tileSize, tileSize, tileSize);
+        imageMode(CENTER);
+        image(grama[0],j * tileSize, i * tileSize, tileSize, tileSize);
       }
+      
       if (map[i][j] == 3) {//imagem da agua.
         for(x=0;x<5;x++){
         imageMode(CENTER);
