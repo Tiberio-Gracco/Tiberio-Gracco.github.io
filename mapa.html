@@ -43,13 +43,13 @@ function preload(){
   agua[3]= loadImage('Imagens/agua3.png');
   agua[4]= loadImage('Imagens/agua4.png');
   
-  grama=loadImage('Imagens/grama0.png');
-  /*grama[1]=loadImage('Imagens/grama1.png');
+  grama[0]=loadImage('Imagens/grama0.png');
+  grama[1]=loadImage('Imagens/grama1.png');
   grama[2]=loadImage('Imagens/grama2.png');
   grama[3]=loadImage('Imagens/grama3.png');
   grama[4]=loadImage('Imagens/grama5.png');
   grama[5]=loadImage('Imagens/grama4.png');
-  */
+  
 }
 function setup() {
   createCanvas(5000, 2000);
@@ -70,8 +70,10 @@ function draw() {
       
       /*o 1 no mapa são as bordas do mapa o 2 são as arvores  */
       if (map[i][j] == 0) {//imagem das arvores.
+         for(x=0;x<5;x++){
         imageMode(CENTER);
-        image(grama,j * tileSize, i * tileSize, tileSize, tileSize);
+        image(grama[k],j * tileSize, i * tileSize, tileSize, tileSize);
+        }
       }
       
       if (map[i][j] == 3) {//imagem da agua.
