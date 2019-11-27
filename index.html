@@ -227,7 +227,7 @@ function draw() {
       image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
     }
   
-  if (dist < 100 && vida_Ind > 0){ //Área de ataque do Índio
+  if (ang2 < Math.PI/2 && dist < 100 && vida_Ind > 0){ //Área de ataque do Índio
     ang2 = ang2 + (Math.PI/6);
     push();
       fill ("yellow");
@@ -238,12 +238,16 @@ function draw() {
     
     vida_Jog = vida_Jog - (1/5);
   }
-  cont3++;
   
-  if (ang2 > Math.PI/2 && cont3 > 200){
+  if (ang2 > Math.PI/2 && cont3 > 30){
     ang2 = -Math.PI / 2;
     cont3 = 0;
   }
+  
+  cont3++;
+  
+  
+  
   
   
   if (dist > 200 && vida_Ind > 0){//Indio quieto
