@@ -69,7 +69,7 @@ function draw() {
       }
       
       /*o 1 no mapa são as bordas do mapa o 2 são as arvores  */
-      if (map[i][j] == 2) {//imagem das arvores.
+      if (map[i][j] == 0) {//imagem das arvores.
         imageMode(CENTER);
         image(grama,j * tileSize, i * tileSize, tileSize, tileSize);
       }
