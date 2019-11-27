@@ -34,7 +34,7 @@ var chao = 552-tileSize;
 var cont=0;
 var deley=5;
 var k=0;
-var grama=[];    
+    var grama=[];
     
 function preload(){
   agua[0]= loadImage('Imagens/agua0.png');
@@ -43,12 +43,7 @@ function preload(){
   agua[3]= loadImage('Imagens/agua3.png');
   agua[4]= loadImage('Imagens/agua4.png');
   
-  grama[0]=loadImage('Imagens/grama0.png');
-  grama[1]=loadImage('Imagens/grama1.png');
-  grama[2]=loadImage('Imagens/grama2.png');
-  grama[3]=loadImage('Imagens/grama3.png');
-  grama[4]=loadImage('Imagens/grama5.png');
-  grama[5]=loadImage('Imagens/grama4.png');
+  grama[0] =loadImage('Imagens/grama.png');
   
 }
 function setup() {
@@ -73,7 +68,7 @@ function draw() {
          for(x=0;x<5;x++){
         imageMode(CENTER);
         noStroke();
-        image(grama[k],j * tileSize, i * tileSize, tileSize, tileSize);
+        image(grama[0],j * tileSize, i * tileSize, tileSize, tileSize);
         }
       }
       
