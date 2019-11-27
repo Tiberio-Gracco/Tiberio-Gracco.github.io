@@ -61,10 +61,6 @@ function draw() {
   fill(255, 255, 0);
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
-      if (map[i][j] == 0) {//imagensda grama
-        imageMode(CENTER);
-        image(grama[0],j * tileSize, i * tileSize, tileSize, tileSize);
-      }
       if (map[i][j] == 1) {//imagensda grama
         rectMode(CENTER);
         fill("yellow");
