@@ -227,21 +227,22 @@ function draw() {
       image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
     }
   
-  if (dist < 100 && vida_Ind > 0 && cont3 == 3){ //Área de ataque do Índio
+  if (dist < 100 && vida_Ind > 0){ //Área de ataque do Índio
     ang2 = ang2 + (Math.PI/6);
     push();
-      translate (x2 + 43, y2 - 40);
+      fill ("yellow");
+      translate (x2 + 43, y2 + 40);
       rotate(ang2);
       rect (5, -77, 5, 77);
     pop();
     
     vida_Jog = vida_Jog - (1/5);
-    cont3 = 0;
   }
   cont3++;
   
-  if (ang2 > Math.PI/2)
-    ang2 = -Math.PI / 2;;
+  if (ang2 > Math.PI/2 && cont3 > 10){
+    ang2 = -Math.PI / 2;
+  }
   
   
   if (dist > 200 && vida_Ind > 0){//Indio quieto
