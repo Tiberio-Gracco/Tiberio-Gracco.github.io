@@ -10,11 +10,11 @@
     var x2 = 500, y2 = 500; //Coordenadas do Indio
     var posicao2 = 0, cont2 = 0;
     var vida_Ind = 70;
-    var ang2 = -Math.PI / 2;
+    var ang2 = -Math.PI / 2, cont3 = 0;
     
     var aux, dist, aux2;
     
-    var vida = 100, coracao; //                 ------------------------------------------ Ajeitar a vida
+    var coracao; //                 ------------------------------------------ Ajeitar a vida
     var balas = 15, cartucho;                                 //                           E as balas
     var madeira = 0, tora;
     
@@ -227,7 +227,7 @@ function draw() {
       image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
     }
   
-  if (dist < 100 && vida_Ind > 0){ //Área de ataque do Índio
+  if (dist < 100 && vida_Ind > 0 && cont3 == 3){ //Área de ataque do Índio
     ang2 = ang2 + (Math.PI/6);
     push();
       translate (x2 + 43, y2 - 40);
@@ -236,7 +236,9 @@ function draw() {
     pop();
     
     vida_Jog = vida_Jog - (1/5);
+    cont3 = 0;
   }
+  cont3++;
   
   if (ang2 > Math.PI/2)
     ang2 = -Math.PI / 2;;
@@ -264,7 +266,7 @@ function draw() {
   fill ("white");
   rect (70, 26, 100, 20, 5);
   fill ("red");
-  rect (70, 26, vida, 20, 5);
+  rect (70, 26, vida_Jog, 20, 5);
   
   fill ("green");
   text (madeira, 80, 145);
