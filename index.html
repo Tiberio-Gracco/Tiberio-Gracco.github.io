@@ -10,6 +10,7 @@
     var x2 = 500, y2 = 500; //Coordenadas do Indio
     var posicao2 = 0, cont2 = 0;
     var vida_Ind = 70;
+    var ang2 = -Math.PI / 2;
     
     var aux, dist, aux2;
     
@@ -192,7 +193,7 @@ function draw() {
       
      
   
-    if (dist <= 200 && vida_Ind > 0){ // Área de Ataque do Indio
+    if (dist <= 200 && vida_Ind > 0){ // Área de Perseguição do Indio
       
       if (cont2 == delay){//Animação da Sprite do Índio
         posicao2++;
@@ -226,13 +227,27 @@ function draw() {
       image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
     }
   
-  if (dist > 200 && vida_Ind > 0)
-    image (Ind_Frente[0], x2, y2);
-  
-  
   if (dist < 100 && vida_Ind > 0){ //Área de ataque do Índio
-    vida = vida - (1/5);
+    ang2 = ang2 + (Math.PI/6);
+    push();
+      translate (x2 + 43, y2 - 40);
+      rotate(ang2);
+      rect (5, -77, 5, 77);
+    pop();
+    
+    vida_Jog = vida_Jog - (1/5);
   }
+  
+  if (ang2 > Math.PI/2)
+    ang2 = -Math.PI / 2;;
+  
+  
+  if (dist > 200 && vida_Ind > 0){//Indio quieto
+    image (Ind_Frente[0], x2, y2);
+    rect (x2 - 10, y2, 5, 77); //"Arma do indio"
+  }
+  
+  
   
   
   
@@ -423,7 +438,7 @@ function draw() {
     }
   }
   
-  if (golpe == true && dist < 70){                               // Alcance do machado, colocar
+  if (golpe == true && dist < 70){ //Se o Indio for atingido pelo machado
     if (vida_Ind - danoMachado >= 0)//Não deixa a vida do Indio ficar negativa
         vida_Ind -= danoMachado;
     else
@@ -431,16 +446,19 @@ function draw() {
   }
   
   
+  
+  
+  
+  //VIDA DO INDIO
   if (vida_Ind > 0){
-    //Exibe a vida do Indio
     fill ("white");
     rect (x2 - 14, y2 - 10, 70, 6);
     fill ("green");
     rect (x2 - 14, y2 - 10, vida_Ind, 6);
   }
-  else{
+  else
     image (dead, x2, y2, 46, 60);
-  }
+  
   
   
   
