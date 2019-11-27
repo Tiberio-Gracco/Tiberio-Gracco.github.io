@@ -72,6 +72,7 @@ function draw() {
       if (map[i][j] == 0) {//imagem das arvores.
          for(x=0;x<5;x++){
         imageMode(CENTER);
+        noStroke();
         image(grama[k],j * tileSize, i * tileSize, tileSize, tileSize);
         }
       }
