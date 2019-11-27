@@ -65,6 +65,17 @@ function draw() {
         for(x=0;x<5;x++){
         imageMode(CENTER);
         image(grama[k],j * tileSize, i * tileSize, tileSize, tileSize);
+        cont++
+      if(cont==7){
+        k++
+      cont=0
+      }
+  else{
+     cont++
+     }
+  if(k>4){
+  k=0;
+  }
         }
       }
       if (map[i][j] == 1) {//imagensda grama
@@ -81,10 +92,7 @@ function draw() {
         for(x=0;x<5;x++){
         imageMode(CENTER);
         image(agua[k],j * tileSize, i * tileSize, tileSize, tileSize);
-        }
-        }
-      }
-    cont++
+        cont++
       if(cont==7){
         k++
       cont=0
@@ -95,6 +103,10 @@ function draw() {
   if(k>4){
   k=0;
   }
+        }
+        }
+      }
+    
     }
 }
     alert("fsdvglajkbvaopidfag");
