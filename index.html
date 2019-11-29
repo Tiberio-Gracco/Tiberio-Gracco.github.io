@@ -3,19 +3,23 @@
   <meta charset="UTF-8">
   <script src="js/p5.min.js"></script>
   <script>
+    
+    //JOGADOR
     var x = 0, y = 0, estado, passos = 3;
     var posicao = 0, cont = 0, delay = 5;
     var vida_Jog = 100;
-        
-    var x2 = 500, y2 = 500; //Coordenadas do Indio
+    
+    //INDIO
+    var x2 = 500, y2 = 500;
     var posicao2 = 0, cont2 = 0;
     var vida_Ind = 70;
     var ang2 = -Math.PI / 2, cont3 = 0;
+    var direcao2; // Indica se o jog está a direita (direcao2 = 0) ou a esquerda (direcao2 = 1) do indio
     
     var aux, dist, aux2;
     
-    var coracao; //                 ------------------------------------------ Ajeitar a vida
-    var balas = 15, cartucho;                                 //                           E as balas
+    var coracao;                                          // ------------------------------------------ Ajeitar a vida
+    var balas = 15, cartucho;                                              //                           E as balas
     var madeira = 0, tora;
     
     //ARMAS
@@ -209,10 +213,12 @@ function draw() {
       // MOVIMENTAÇÃO DO INDIO
       if (x2 < x && colisao (x2 + 1, y2, 33, 77, x, y, 33, 77) == false){ //Jogador à direita do Indio 
         x2++;
+        direcao2 = 0;
         aux2 = Ind_Direita[posicao2];
       }
       if (x2 > x && colisao (x2 - 1, y2, 33, 77, x, y, 33, 77) == false){ //Jogador à esquerda do Indio
         x2--;
+        direcao2 = 1;
         aux2 = Ind_Esquerda[posicao2];
       }
       if (y2 < y && colisao (x2, y2 + 1, 33, 77, x, y, 33, 77) == false){ //Jogador abaixo do Indio
@@ -227,7 +233,20 @@ function draw() {
       image (aux2, x2, y2); //Exibe o Indio com imagem e coordenadas já atualizadas
     }
   
-  if (ang2 < Math.PI/2 && dist < 100 && vida_Ind > 0){ //Área de ataque do Índio
+  
+  //ATAQUE DO INDIO
+  if (ang2 > Math.PI/2 || ang2 < -3*Math.PI/2){
+    if (cont3 > 30)
+      ang2 = -Math.PI/2;
+  }
+  
+  if (direcao2 = 0 && dist < 100 && vida_Ind > 0){ // Jog na direita do indio e dentro da área de ataque
+    ang2 += Math.PI/6;
+    if (direcao2 = 1) // Jog na esquerda do indio
+      ang2 -= Math.PI/6;
+  }    
+      
+      
     ang2 = ang2 + (Math.PI/6);
     push();
       fill ("yellow");
@@ -236,8 +255,8 @@ function draw() {
       rect (0, -77, 5, 77);
     pop();
     
-    vida_Jog = vida_Jog - (1/5);
-  }
+    vida_Jog--;
+  
   
   if (ang2 > Math.PI/2 && cont3 > 30){
     ang2 = -Math.PI / 2;
@@ -245,9 +264,6 @@ function draw() {
   }
   
   cont3++;
-  
-  
-  
   
   
   if (dist > 200 && vida_Ind > 0){//Indio quieto
