@@ -25,7 +25,6 @@
 var x1;
 var agua=[];
 var tileSize=50;
-var chao = 552-tileSize;
 var cont1=0;
 var k=0;
 var grama=[];
@@ -216,7 +215,7 @@ function draw() {
         }
     }
     }
-  cont++
+  cont1++
       if(cont==7){
         k++
       cont1=0
@@ -284,8 +283,8 @@ function draw() {
     if (posicao > 3)
       posicao = 0;
   
-    fill ("black");
-    text ("Posicao: " + posicao, 200, 200);
+  
+  
   
     noFill();
     ellipse (x2, y2, 400, 400); //área de perseguição
