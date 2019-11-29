@@ -21,18 +21,12 @@ let map = [
   [1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ];
-    
-var x = 51;
-var y = 51;
-var velocidade = 0;
-var gravidade = 1.5;
-var xi = 400;
-var yi = 400;
+
+var x1;
 var agua=[];
 var tileSize=50;
 var chao = 552-tileSize;
-var cont=0;
-var deley=5;
+var cont1=0;
 var k=0;
 var grama=[];
 var areia=[];
@@ -65,8 +59,8 @@ function draw() {
         fill("yellow");
         rect(j * tileSize, i * tileSize, tileSize, tileSize);
       }
-      if (map[i][j] == 2) {//imagens das pedras
-        for(x=0;x<5;x++){
+      if (map[i][j] == 2) {//imagens da areia
+        for(x1=0;x1<5;x1++){
         imageMode(CENTER);
         image(areia[0],j * tileSize, i * tileSize, tileSize, tileSize);
         }
@@ -74,20 +68,20 @@ function draw() {
       
       /*o 1 no mapa são as bordas do mapa o 2 são as arvores  */
       if (map[i][j] == 0) {//imagens da grama.
-         for(x=0;x<5;x++){
+         for(x1=0;x1<5;x1++){
         imageMode(CENTER);
         image(grama[0],j * tileSize, i * tileSize, tileSize, tileSize);
         }
       }
       
       if (map[i][j] == 3) {//imagem da agua.
-        for(x=0;x<5;x++){
+        for(x1=0;x1<5;x1++){
         imageMode(CENTER);
         image(agua[k],j * tileSize, i * tileSize, tileSize, tileSize);
         }
         }
       if (map[i][j] == 4) {//imagem da arvore.
-        for(x=0;x<5;x++){
+        for(x1=0;x1<5;x1++){
         imageMode(CENTER);
         image(arvore[0],j * tileSize, i * tileSize, tileSize, 1.5*tileSize);
         }
@@ -97,10 +91,10 @@ function draw() {
   cont++
       if(cont==7){
         k++
-      cont=0
+      cont1=0
       }
   else{
-     cont++
+     cont1++
      }
   if(k>4){
   k=0;
