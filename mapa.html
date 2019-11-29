@@ -34,7 +34,8 @@ var chao = 552-tileSize;
 var cont=0;
 var deley=5;
 var k=0;
-    var grama=[];
+var grama=[];
+var areia=[];
     
 function preload(){
   agua[0]= loadImage('Imagens/agua0.png');
@@ -44,7 +45,7 @@ function preload(){
   agua[4]= loadImage('Imagens/agua4.png');
   
   grama[0] =loadImage('Imagens/grama.png');
-  
+  areia[0] =loadImage('Imagens/areia.png');
 }
 function setup() {
   createCanvas(5000, 2000);
@@ -57,14 +58,20 @@ function draw() {
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
       
-      if (map[i][j] == 1) {//imagensda grama
+      if (map[i][j] == 1) {//imagens das pedras
         rectMode(CENTER);
         fill("yellow");
         rect(j * tileSize, i * tileSize, tileSize, tileSize);
       }
+      if (map[i][j] == 2) {//imagens das pedras
+        for(x=0;x<5;x++){
+        imageMode(CENTER);
+        image(areia[0],j * tileSize, i * tileSize, tileSize, tileSize);
+        }
+      }
       
       /*o 1 no mapa são as bordas do mapa o 2 são as arvores  */
-      if (map[i][j] == 0) {//imagem das arvores.
+      if (map[i][j] == 0) {//imagens da grama.
          for(x=0;x<5;x++){
         imageMode(CENTER);
         image(grama[0],j * tileSize, i * tileSize, tileSize, tileSize);
