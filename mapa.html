@@ -10,7 +10,7 @@ let map = [
   [1,0,0,0,0,2,2,0,1,1,1,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,3,3,3,3,3,1],
   [1,0,0,0,0,0,2,0,1,1,1,1,1,2,2,2,0,0,0,0,0,0,0,0,0,0,0,2,2,3,3,3,3,3,1],
   [1,0,0,0,0,0,0,0,0,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,1],
-  [1,0,0,0,0,0,0,0,0,0,2,2,1,1,0,0,0,0,0,0,0,0,0,0,2,0,0,2,2,3,3,3,3,3,1],
+  [1,0,0,0,0,0,0,0,0,0,2,2,1,1,0,0,0,0,0,4,0,0,0,0,2,0,0,2,2,3,3,3,3,3,1],
   [1,0,0,0,1,1,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,3,3,3,3,3,1],
   [1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,2,0,2,2,2,3,3,3,3,1],
   [1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,2,0,2,2,3,3,3,3,1],
@@ -36,6 +36,7 @@ var deley=5;
 var k=0;
 var grama=[];
 var areia=[];
+var arvore=[];
     
 function preload(){
   agua[0]= loadImage('Imagens/agua0.png');
@@ -46,6 +47,7 @@ function preload(){
   
   grama[0] =loadImage('Imagens/grama.png');
   areia[0] =loadImage('Imagens/areia.png');
+  arvore[0] =loadImage('Imagens/arvore.png');
 }
 function setup() {
   createCanvas(5000, 2000);
@@ -82,6 +84,12 @@ function draw() {
         for(x=0;x<5;x++){
         imageMode(CENTER);
         image(agua[k],j * tileSize, i * tileSize, tileSize, tileSize);
+        }
+        }
+      if (map[i][j] == 4) {//imagem da agua.
+        for(x=0;x<5;x++){
+        imageMode(CENTER);
+        image(arvore[k],j * tileSize, i * tileSize, tileSize, tileSize);
         }
         }
     }
