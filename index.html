@@ -242,13 +242,8 @@ function draw() {
   
   if (direcao2 = 0 && dist < 100 && vida_Ind > 0){ // Jog na direita do indio e dentro da área de ataque
     ang2 += Math.PI/6;
-    if (direcao2 = 1) // Jog na esquerda do indio
-      ang2 -= Math.PI/6;
-  }    
-      
-      
-    ang2 = ang2 + (Math.PI/6);
-    push();
+    
+     push();
       fill ("yellow");
       translate (x2 + 33, y2 + 40);
       rotate(ang2);
@@ -256,6 +251,23 @@ function draw() {
     pop();
     
     vida_Jog--;
+  }
+  
+  if (direcao2 = 1 && dist < 100 && vida_Ind > 0){ // Jog na esquerda do indio e dentro da área de ataque
+    ang2 -= Math.PI/6;
+      
+    push();
+      fill ("yellow");
+      translate (x2, y2 + 40);
+      rotate(ang2);
+      rect (0, -77, 5, 77);
+    pop();
+    
+    vida_Jog--;
+  }    
+      
+
+   
   
   
   if (ang2 > Math.PI/2 && cont3 > 30){
