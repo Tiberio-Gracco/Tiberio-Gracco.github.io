@@ -234,6 +234,8 @@ function draw() {
     }
   
   
+  // -------------------------------------------------- AJEITAR -----------------------------------------------
+  
   //ATAQUE DO INDIO
   if (ang2 > Math.PI/2 || ang2 < -3*Math.PI/2){
     if (cont3 > 30){
@@ -241,6 +243,18 @@ function draw() {
       cont3 = 0
     }
   }
+  
+  
+  /*
+  if (dist < 100 && vida_Ind > 0){ // O indio ataca
+    if (direcao2 == 0){ //Ataque a direita
+      
+    }
+    
+  }
+  
+  */
+  
   
   if (direcao2 = 0 && dist < 100 && vida_Ind > 0){ // Jog na direita do indio e dentro da área de ataque
     ang2 += Math.PI/6;
@@ -269,6 +283,13 @@ function draw() {
   }   
   
   cont3++;
+  
+  
+  
+  // -------------------------------------------------- AJEITAR -----------------------------------------------
+  
+  
+  
   
   
   if (dist > 200 && vida_Ind > 0){//Indio quieto
