@@ -3,7 +3,38 @@
   <meta charset="UTF-8">
   <script src="js/p5.min.js"></script>
   <script>
+    let map = [
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,1],
+  [1,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,1],
+  [1,0,0,0,0,2,2,0,1,1,1,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,3,3,3,3,3,1],
+  [1,0,0,0,0,0,2,0,1,1,1,1,1,2,2,2,0,0,0,0,0,0,0,0,0,0,0,2,2,3,3,3,3,3,1],
+  [1,0,0,0,0,0,0,0,0,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,1],
+  [1,0,0,0,0,0,0,0,0,0,2,2,1,1,0,0,0,0,0,4,0,0,0,0,2,0,0,2,2,3,3,3,3,3,1],
+  [1,0,0,0,1,1,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,3,3,3,3,3,1],
+  [1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,2,0,2,2,2,3,3,3,3,1],
+  [1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,2,0,2,2,3,3,3,3,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,2,0,0,3,3,3,3,1],
+  [1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,3,3,3,3,1],
+  [1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,1],
+  [1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,1],
+  [1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+];
+
+var x1;
+var agua=[];
+var tileSize=50;
+var chao = 552-tileSize;
+var cont1=0;
+var k=0;
+var grama=[];
+var areia=[];
+var arvore=[];
     
+    
+    
+
     //JOGADOR
     var x = 0, y = 0, estado, passos = 3;
     var posicao = 0, cont = 0, delay = 5;
@@ -64,6 +95,19 @@
 
     
 function preload(){
+  //MAPA
+  agua[0]= loadImage('Imagens/agua0.png');
+  agua[1]= loadImage('Imagens/agua1.png');
+  agua[2]= loadImage('Imagens/agua2.png');
+  agua[3]= loadImage('Imagens/agua3.png');
+  agua[4]= loadImage('Imagens/agua4.png');
+  
+  grama[0] =loadImage('Imagens/grama.png');
+  areia[0] =loadImage('Imagens/areia.png');
+  arvore[0] =loadImage('Imagens/arvore.png');
+  
+  
+  
   //Salva as img de movimentação dos persongagens
   
   //JOGADOR
@@ -132,6 +176,62 @@ function setup() {
 function draw() {
     background ("white");
 
+  
+  //MAPA
+  fill(255, 255, 0);
+  for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[i].length; j++) {
+      
+      if (map[i][j] == 1) {//imagens das pedras
+        rectMode(CENTER);
+        fill("yellow");
+        rect(j * tileSize, i * tileSize, tileSize, tileSize);
+      }
+      if (map[i][j] == 2) {//imagens da areia
+        for(x1=0;x1<5;x1++){
+        imageMode(CENTER);
+        image(areia[0],j * tileSize, i * tileSize, tileSize, tileSize);
+        }
+      }
+      
+      /*o 1 no mapa são as bordas do mapa o 2 são as arvores  */
+      if (map[i][j] == 0) {//imagens da grama.
+         for(x1=0;x1<5;x1++){
+        imageMode(CENTER);
+        image(grama[0],j * tileSize, i * tileSize, tileSize, tileSize);
+        }
+      }
+      
+      if (map[i][j] == 3) {//imagem da agua.
+        for(x1=0;x1<5;x1++){
+        imageMode(CENTER);
+        image(agua[k],j * tileSize, i * tileSize, tileSize, tileSize);
+        }
+        }
+      if (map[i][j] == 4) {//imagem da arvore.
+        for(x1=0;x1<5;x1++){
+        imageMode(CENTER);
+        image(arvore[0],j * tileSize, i * tileSize, tileSize, 1.5*tileSize);
+        }
+        }
+    }
+    }
+  cont++
+      if(cont==7){
+        k++
+      cont1=0
+      }
+  else{
+     cont1++
+     }
+  if(k>4){
+  k=0;
+  }
+  
+  
+  
+  
+  
     if(keyIsPressed == true)
       estado = key;
     else
