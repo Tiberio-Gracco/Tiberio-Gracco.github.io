@@ -236,8 +236,10 @@ function draw() {
   
   //ATAQUE DO INDIO
   if (ang2 > Math.PI/2 || ang2 < -3*Math.PI/2){
-    if (cont3 > 30)
+    if (cont3 > 30){
       ang2 = -Math.PI/2;
+      cont3 = 0
+    }
   }
   
   if (direcao2 = 0 && dist < 100 && vida_Ind > 0){ // Jog na direita do indio e dentro da área de ataque
