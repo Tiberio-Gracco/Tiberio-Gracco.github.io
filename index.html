@@ -362,6 +362,7 @@ function draw() {
   }
   cont3++;
   
+  fill ("black");
   text ("golpe 2: " + golpe2, 50, 300);
   
   /*
@@ -404,6 +405,7 @@ function draw() {
   
   if (dist > 200 && vida_Ind > 0){//Indio quieto
     image (Ind_Frente[0], x2, y2);
+    fill("yellow");
     rect (x2 - 10, y2, 5, 77); //"Arma do indio"
   }
   
