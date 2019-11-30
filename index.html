@@ -341,7 +341,7 @@ function draw() {
     ang2 = -Math.PI/2; //A arma volta para a posição inicial
     golpe2 = false;
   }
-  if (cont3 > 10){
+  if (cont3 > 15){
     golpe2 = true;
     cont3 = 0;
   }
@@ -359,6 +359,25 @@ function draw() {
     
       vida_Jog -= 1/2;
     }
+    
+    if (direcao2 == 1){ //Ataque a esquerda
+      ang2 -= Math.PI/6;
+      
+      push();
+      fill ("yellow");
+      translate (x2, y2 + 40);
+      rotate(ang2);
+      scale (1, -1);
+      rect (0, -77, 5, 77);
+      pop();
+    
+      vida_Jog -= 1/2;
+    }
+    
+    
+    
+    
+    
   }
   cont3++;
   
