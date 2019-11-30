@@ -232,7 +232,7 @@ function draw() {
   
     imageMode (CORNER);
     rectMode (CORNER);
-    if(keyIsPressed == true)
+    if(keyIsPressed == true && vida_Jog > 0)
       estado = key;
     else
       estado = 0;
@@ -290,8 +290,11 @@ function draw() {
     noFill();
     ellipse (x2, y2, 400, 400); //área de perseguição
     ellipse (x2, y2, 200, 200); //área de ataque
-  
-    image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
+    
+    if (vida_Jog > 0)
+      image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
+    else
+      image (dead, x, y);
     
     dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
       
@@ -673,7 +676,7 @@ function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
     
     
 function mouseClicked(){ 
- if (arma == 1 && balas >= 3){ //Tá com a espingarda e tem munição
+ if (arma == 1 && balas >= 3 && vida_Jog > 0){ //Tá com a espingarda e tem munição
    
    if (contTiros > cadencia){//Disparo
     xAlvo = mouseX;
@@ -693,14 +696,14 @@ function mouseClicked(){
    }
  }
   
- if (arma == 0){ //Tá com o Machado
+ if (arma == 0 && vida_Jog > 0){ //Tá com o Machado
    golpe = true;
    ang = -Math.PI / 2;
  }
 }  
     
 function keyPressed (){
- if (key == 'q'){ //Altera a arma
+ if (key == 'q' && vida_Jog > 0){ //Altera a arma
     if (arma == 0)
       arma = 1;
     else
