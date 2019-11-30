@@ -341,7 +341,7 @@ function draw() {
     ang2 = -Math.PI/2; //A arma volta para a posição inicial
     golpe2 = false;
   }
-  if (cont3 > 20){
+  if (cont3 > 10){
     golpe2 = true;
     cont3 = 0;
   }
@@ -363,7 +363,7 @@ function draw() {
   cont3++;
   
   fill ("black");
-  text ("golpe 2: " + golpe2, 50, 300);
+  text ("golpe 2: " + golpe2, 500, 40);
   
   /*
   if (direcao2 = 0 && dist < 100 && vida_Ind > 0){ // Jog na direita do indio e dentro da área de ataque
