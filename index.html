@@ -290,11 +290,12 @@ function draw() {
     noFill();
     ellipse (x2, y2, 400, 400); //área de perseguição
     ellipse (x2, y2, 200, 200); //área de ataque
-    
+  
     if (vida_Jog > 0)
       image (aux, x, y); //Exibe o jogador com a imagem atualizada nos x e y já modificados
     else
       image (dead, x, y);
+  
     
     dist = Math.sqrt( (y - y2)**2 + (x - x2)**2 );
       
@@ -376,13 +377,14 @@ function draw() {
     
       vida_Jog -= 1/2;
     }
-    
-    
-    
-    
-    
   }
   cont3++;
+  
+  
+  if (vida_Jog < 0)//Não deixa a vida do Jogador ficar negativa
+   vida_Jog = 0; 
+  
+  
   
   fill ("black");
   text ("golpe 2: " + golpe2, 500, 40);
@@ -615,21 +617,23 @@ function draw() {
   //DANO
   for (i = 0; i < quantTiros; i++){
     if (colisao(x2, y2, 33, 77, Xtiro[i] - 5, Ytiro[i] - 5, 10, 10) == true){ //Se o indio for atingido por um tiro de espingarda
-      if (vida_Ind - danoEsping >= 0)//Não deixa a vida do Indio ficar negativa
+//      if (vida_Ind - danoEsping >= 0)//Não deixa a vida do Indio ficar negativa
         vida_Ind -= danoEsping;
-      else
-        vida_Ind = 0;
+//      else
+//        vida_Ind = 0;
     }
   }
   
   if (golpe == true && dist < 70){ //Se o Indio for atingido pelo machado
-    if (vida_Ind - danoMachado >= 0)//Não deixa a vida do Indio ficar negativa
+//    if (vida_Ind - danoMachado >= 0)
         vida_Ind -= danoMachado;
-    else
-        vida_Ind = 0;
+//    else
+//        vida_Ind = 0;
   }
   
   
+  if (vida_Ind < 0)//Não deixa a vida do Indio ficar negativa
+   vida_Ind = 0; 
   
   
   
