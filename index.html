@@ -45,6 +45,7 @@ var arvore=[];
     var vida_Ind = 70;
     var ang2 = -Math.PI / 2, cont3 = 0;
     var direcao2; // Indica se o jog está a direita (direcao2 = 0) ou a esquerda (direcao2 = 1) do indio
+    var golpe2 == true;
     
     var aux, dist, aux2;
     
@@ -337,24 +338,33 @@ function draw() {
   
   //ATAQUE DO INDIO
   if (ang2 > Math.PI/2 || ang2 < -3*Math.PI/2){
-    if (cont3 > 30){
-      ang2 = -Math.PI/2;
-      cont3 = 0
-    }
+    ang2 = -Math.PI/2; //A arma volta para a posição inicial
+    golpe2 = false;
+  }
+  if (cont3 > 20){
+    golpe2 = true;
+    cont3 = 0;
   }
   
+  if (dist < 100 && vida_Ind > 0 && golpe2 == true){ // O indio ataca
+    if (direcao2 == 0){ //Ataque a direita
+      ang2 += Math.PI/6;
+    
+      push();
+      fill ("yellow");
+      translate (x2 + 33, y2 + 40);
+      rotate(ang2);
+      rect (0, -77, 5, 77);
+      pop();
+    
+      vida_Jog -= 1/2;
+    }
+  }
+  cont3++;
+  
+  text ("golpe 2: " + golpe2, 50, 300);
   
   /*
-  if (dist < 100 && vida_Ind > 0){ // O indio ataca
-    if (direcao2 == 0){ //Ataque a direita
-      
-    }
-    
-  }
-  
-  */
-  
-  
   if (direcao2 = 0 && dist < 100 && vida_Ind > 0){ // Jog na direita do indio e dentro da área de ataque
     ang2 += Math.PI/6;
     
@@ -384,7 +394,8 @@ function draw() {
   cont3++;
   
   
-  
+  */
+    
   // -------------------------------------------------- AJEITAR -----------------------------------------------
   
   
