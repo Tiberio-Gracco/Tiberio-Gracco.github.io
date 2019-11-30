@@ -350,7 +350,7 @@ function draw() {
     cont3 = 0;
   }
   
-  if (dist < 100 && vida_Ind > 0 && golpe2 == true){ // O indio ataca
+  if (dist < 100 && vida_Ind > 0 && vida_Jog > 0 && golpe2 == true){ // O indio ataca
     if (direcao2 == 0){ //Ataque a direita
       ang2 += Math.PI/6;
     
@@ -488,7 +488,7 @@ function draw() {
   angulo = atan2 (mouseY - yMachado, mouseX - xMachado);
   
   
-  if (angulo >= -HALF_PI && angulo <= HALF_PI){//Mouse na direita
+  if (angulo >= -HALF_PI && angulo <= HALF_PI && vida_Jog > 0){//Mouse na direita
     direcao = 0;
     push();
 /*    
@@ -513,7 +513,7 @@ function draw() {
   }
   
   
-  if (angulo < -HALF_PI || angulo > HALF_PI){//Mouse na esquerda
+  if (angulo < -HALF_PI || angulo > HALF_PI && vida_Jog > 0){//Mouse na esquerda
     direcao = 1;
     push();
 /*    
@@ -616,21 +616,12 @@ function draw() {
   
   //DANO
   for (i = 0; i < quantTiros; i++){
-    if (colisao(x2, y2, 33, 77, Xtiro[i] - 5, Ytiro[i] - 5, 10, 10) == true){ //Se o indio for atingido por um tiro de espingarda
-//      if (vida_Ind - danoEsping >= 0)//Não deixa a vida do Indio ficar negativa
+    if (colisao(x2, y2, 33, 77, Xtiro[i] - 5, Ytiro[i] - 5, 10, 10) == true) //Se o indio for atingido por um tiro de espingarda
         vida_Ind -= danoEsping;
-//      else
-//        vida_Ind = 0;
-    }
   }
   
-  if (golpe == true && dist < 70){ //Se o Indio for atingido pelo machado
-//    if (vida_Ind - danoMachado >= 0)
-        vida_Ind -= danoMachado;
-//    else
-//        vida_Ind = 0;
-  }
-  
+  if (golpe == true && dist < 70) //Se o Indio for atingido pelo machado
+      vida_Ind -= danoMachado;
   
   if (vida_Ind < 0)//Não deixa a vida do Indio ficar negativa
    vida_Ind = 0; 
