@@ -82,6 +82,7 @@ var compBot6 = 100, altBot6 = 50;
     var ang2 = -Math.PI / 2, cont3 = 0;
     var direcao2; // Indica se o jog está a direita (direcao2 = 0) ou a esquerda (direcao2 = 1) do indio
     var golpe2 = true, danoIndio = 3/4;
+    var Lança;
     
     var aux, dist, aux2;
     
@@ -203,6 +204,7 @@ function preload(){
   Ind_Tras[2] = loadImage("Imagens/Índio - Trás2.png");
   Ind_Tras[3] = loadImage("Imagens/Índio - Trás3.png");
   
+  
   dead = loadImage ("Imagens/WASTED(1).png");
   
   coracao = loadImage ("Imagens/Vida.png");
@@ -213,6 +215,7 @@ function preload(){
   espingarda = loadImage ("Imagens/Espingarda.png");
   sabre = loadImage ("Imagens/Sabre2.png");
   machado = loadImage ("Imagens/Machado.png");
+  Lança = loadImage ("Imagens/Lança.png");
   
 }
     
@@ -286,7 +289,6 @@ function draw() {
   
   
  if (tela == 3){ //Está na Primeira Fase
-  
   background ("white");
 
   
@@ -418,7 +420,7 @@ function draw() {
     if (dist > 200 && vida_Ind > 0){//Indio quieto
       image (Ind_Frente[0], x2, y2);
       fill("yellow");
-      rect (x2 - 10, y2, 5, 77); //"Arma do indio"
+      image (Lança, x2 + 40, y2);
     }
   
     if (dist <= 200 && vida_Ind > 0){ // Área de Perseguição do Indio
@@ -477,7 +479,7 @@ function draw() {
       fill ("yellow");
       translate (x2 + 33, y2 + 40);
       rotate(ang2);
-      rect (0, -77, 5, 77);
+      image (Lança, 0, -74);
       pop();
     
       vida_Jog -= danoIndio;
@@ -491,7 +493,7 @@ function draw() {
       translate (x2, y2 + 40);
       rotate(ang2);
       scale (1, -1);
-      rect (0, -77, 5, 77);
+      image (Lança, 0, -74);
       pop();
     
       vida_Jog -= danoIndio;
