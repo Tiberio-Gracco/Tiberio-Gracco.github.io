@@ -33,7 +33,43 @@ var arvore=[];
     
     
     
+//Dados do Botão 1 (INICIAR)
+var xBot =  458, yBot = 300;
+var compBot = 449, altBot = 95;
+var B1, B1press;
+    
+//Dados do Botão 2 (CONFIGURAÇÕES)
+var xBot2 = 458, yBot2 = 400;
+var compBot2 = 449, altBot2 = 95;
+var B2, B2press;
+    
+//Dados do Botão 3 (SAIR)
+var xBot3 = 458, yBot3 = 500;
+var compBot3 = 449, altBot3 = 95;
+var B3, B3press;
+    
+//Dados do Botão 4 (VOLTAR P/ O MENU)
+var xBot4 =  350, yBot4 = 400;
+var compBot4 = 100, altBot4 = 50;
+    
+//Dados do Botão 5 (ACEITAR)
+var xBot5 =  558, yBot5 = 468;
+var compBot5 = 100, altBot5 = 50;
+    
+//Dados do Botão 6 (RECUSAR)
+var xBot6 =  708, yBot6 = 468;
+var compBot6 = 100, altBot6 = 50;
+    
+    
+    var tela; //Variável que coordena as telas
+    //tela = 0 - Menu inicial
+    //tela = 1 - Configurações
+    //tela = 2 - Sair
+    //tela = 3 - Primeira fase
 
+    var imgFundo;
+    
+    
     //JOGADOR
     var x = 0, y = 0, estado, passos = 3;
     var posicao = 0, cont = 0, delay = 5;
@@ -110,9 +146,19 @@ function preload(){
   arvore[0] =loadImage('Imagens/arvore.png');
   
   
+  //Menu Inicial
+  imgFundo = loadImage ('Imagens/Fundação de São Vicente.jpg');
+  
+  B1 = loadImage('Imagens/Botão - Novo Jogo.png');
+  B2 = loadImage('Imagens/Botão - Configurações.png');
+  B3 = loadImage('Imagens/Botão - Sair.png');
+  
+  B1press = loadImage('Imagens/Botão - Novo Jogo(P).png');
+  B2press = loadImage('Imagens/Botão - Configurações(P).png');
+  B3press = loadImage('Imagens/Botão - Sair(P).png');
+  
   
   //Salva as img de movimentação dos persongagens
-  
   //JOGADOR
   Jog_Frente[0] = loadImage("Imagens/Jogador - Frente0.png");
   Jog_Frente[1] = loadImage("Imagens/Jogador - Frente1.png");
@@ -174,10 +220,74 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   aux = Jog_Frente[0];
   aux2 = Ind_Frente[0];
+  tela = 0;
 }
 
 function draw() {
-    background ("white");
+  
+  if (tela == 0){//Está no menu inicial
+    background(imgFundo);
+  
+    //Botão 1
+    if (colisao (xBot, yBot, compBot, altBot, mouseX, mouseY, 1,1))
+      image(B1press, xBot, yBot, compBot, altBot);
+    else
+      image(B1, xBot, yBot, compBot, altBot);
+    
+    //Botão 2
+    if (colisao (xBot2, yBot2, compBot2, altBot2, mouseX, mouseY, 1,1))
+      image(B2press, xBot2, yBot2, compBot2, altBot2);
+    else
+      image(B2, xBot2, yBot2, compBot2, altBot2);
+  
+    //Botão 3
+    if (colisao (xBot3, yBot3, compBot3, altBot3, mouseX, mouseY, 1,1))
+      image(B3press, xBot3, yBot3, compBot3, altBot3);
+    else
+      image(B3, xBot3, yBot3, compBot3, altBot3);
+  }
+  
+  
+  if (tela == 1){//Está nas configurações
+    background ("blue");
+  
+    //Botão 4
+    fill ("black");
+    rect (xBot4, yBot4, compBot4, altBot4, 10);
+    fill ("white");
+    textFont ("TimesNewRoman",15);
+    text ("Voltar", xBot4 + 30 , yBot4 + 30);
+  }
+  
+  
+  
+  if (tela == 2){//Está saindo do jogo
+    background (imgFundo);
+    fill ("gray");
+    rect (518, 328, 330, 160, 5);
+  
+    fill ("White");
+    textFont ("TimesNewRoman",25);
+    text ("Tem certeza que deseja sair?", 543, 388);
+  
+    //Botão 5
+    fill ("green");
+    rect (xBot5, yBot5, compBot5, altBot5, 7);
+    fill ("white");
+    text ("Sim", xBot5 + 30 , yBot5 + 35);
+  
+    //Botão 6
+    fill ("red");
+    rect (xBot6, yBot6, compBot6, altBot6, 7);
+    fill ("white");
+    text ("Não", xBot6 + 30 , yBot6 + 35);
+  }
+  
+  
+  
+ if (tela == 3){ //Está na Primeira Fase
+  
+  background ("white");
 
   
   //MAPA
@@ -630,7 +740,9 @@ function draw() {
   text ("angulo: " + angulo, 20, 300);
   text ("golpe 2: " + golpe2, 500, 40);
   
-}
+   
+ }//Fim da primeira fase
+}//draw
     
 function colisao(xA, yA, compA, altA, xB, yB, compB, altB){
   //Colisão entre dois objetos A e B.
@@ -675,6 +787,62 @@ function mouseClicked(){
    golpe = true;
    ang = -Math.PI / 2;
  }
+  
+  
+  
+  
+  if (tela == 0){ //Está na tela inicial
+
+    //Botão 1 (INICIAR)
+    if (colisao(xBot, yBot, compBot, altBot, mouseX, mouseY, 1, 1) == true){
+      tela = 3;
+      background(chao);
+    }
+  
+    //Botão 2 (CONFIGURAÇÕES)
+    if (colisao(xBot2, yBot2, compBot2, altBot2, mouseX, mouseY, 1, 1) == true){
+      tela = 1;
+    }
+  
+    //Botão 3 (SAIR)
+    if (colisao(xBot3, yBot3, compBot3, altBot3, mouseX, mouseY, 1, 1) == true){
+      tela = 2;
+    }
+  }
+  
+  if (tela == 1){//Está na tela de Configurações
+    
+    //Botão 4
+    if (colisao(xBot4, yBot4, compBot4, altBot4, mouseX, mouseY, 1, 1) == true){
+      tela = 0;
+    }
+  }
+   
+  if (tela == 2){//Está na tela de Sair
+    
+    //Botão 5 (SIM)
+    if (colisao(xBot5, yBot5, compBot5, altBot5, mouseX, mouseY, 1, 1) == true){
+      tela = -1;      
+      background("black");
+    }
+   
+    //Botão 6 (NÃO)
+    if (colisao(xBot6, yBot6, compBot6, altBot6, mouseX, mouseY, 1, 1) == true){
+      tela = 0;
+    }
+  }
+  
+  if (tela == 3){//Está na tela da primeira fase
+    
+    //Botão 4
+    if (colisao(xBot4, yBot4, compBot4, altBot4, mouseX, mouseY, 1, 1) == true){
+      tela = 0;
+    }
+  }
+  
+  
+  
+  
 }  
     
 function keyPressed (){
