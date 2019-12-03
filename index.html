@@ -81,6 +81,9 @@ var arvore=[];
     var i;
     var angulo;
     
+    var xBalas = 700, yBalas = 170;
+    var xLife = 1600, yLife = 700;
+    
     var Jog_Frente = [];
     var Jog_Direita = [];
     var Jog_Esquerda = [];
@@ -301,6 +304,13 @@ function draw() {
       
      
   
+  
+    if (dist > 200 && vida_Ind > 0){//Indio quieto
+      image (Ind_Frente[0], x2, y2);
+      fill("yellow");
+      rect (x2 - 10, y2, 5, 77); //"Arma do indio"
+    }
+  
     if (dist <= 200 && vida_Ind > 0){ // Área de Perseguição do Indio
       
       if (cont2 == delay){//Animação da Sprite do Índio
@@ -338,7 +348,6 @@ function draw() {
     }
   
   
-  // -------------------------------------------------- AJEITAR -----------------------------------------------
   
   //ATAQUE DO INDIO
   if (ang2 > Math.PI/2 || ang2 < -3*Math.PI/2){
@@ -383,56 +392,6 @@ function draw() {
   
   if (vida_Jog < 0)//Não deixa a vida do Jogador ficar negativa
    vida_Jog = 0; 
-  
-  
-  
-  fill ("black");
-  text ("golpe 2: " + golpe2, 500, 40);
-  
-  /*
-  if (direcao2 = 0 && dist < 100 && vida_Ind > 0){ // Jog na direita do indio e dentro da área de ataque
-    ang2 += Math.PI/6;
-    
-     push();
-      fill ("yellow");
-      translate (x2 + 33, y2 + 40);
-      rotate(ang2);
-      rect (0, -77, 5, 77);
-    pop();
-    
-    vida_Jog--;
-  }
-  
-  if (direcao2 = 1 && dist < 100 && vida_Ind > 0){ // Jog na esquerda do indio e dentro da área de ataque
-    ang2 -= Math.PI/6;
-      
-    push();
-      fill ("yellow");
-      translate (x2, y2 + 40);
-      rotate(ang2);
-      rect (0, -77, 5, 77);
-    pop();
-    
-    vida_Jog--;
-  }   
-  
-  cont3++;
-  
-  
-  */
-    
-  // -------------------------------------------------- AJEITAR -----------------------------------------------
-  
-  
-  
-  
-  
-  if (dist > 200 && vida_Ind > 0){//Indio quieto
-    image (Ind_Frente[0], x2, y2);
-    fill("yellow");
-    rect (x2 - 10, y2, 5, 77); //"Arma do indio"
-  }
-  
   
   
   
@@ -513,7 +472,7 @@ function draw() {
   }
   
   
-  if (angulo < -HALF_PI || angulo > HALF_PI && vida_Jog > 0){//Mouse na esquerda
+  if ((angulo < -HALF_PI || angulo > HALF_PI) && vida_Jog > 0){//Mouse na esquerda
     direcao = 1;
     push();
 /*    
@@ -641,6 +600,26 @@ function draw() {
   
   
   
+  //OBJETOS ESPECIAIS
+  if (colisao (x, y, 33, 77, xLife, yLife, 38, 32) == true){ //Vida Extra
+    vida_Jog += 40; 
+    xLife = 3000;
+    yLife = 3000;
+  }
+  
+  image (coracao, xLife, yLife);
+  
+  if (colisao (x, y, 33, 77, xBalas, yBalas, 50, 31) == true){ //Munição Extra
+    balas += 15; 
+    xBalas = 3000;
+    yBalas = 3000;
+  }
+  
+  image (cartucho, xBalas, yBalas);
+  
+  
+  
+  
   //COORDENADAS DOS PERSONAGENS
   fill ("black");
   text ("x: " + x + ", y: " + y, x, y - 20);
@@ -649,6 +628,7 @@ function draw() {
   
   text ("golpe: " + golpe, 500, 30);
   text ("angulo: " + angulo, 20, 300);
+  text ("golpe 2: " + golpe2, 500, 40);
   
 }
     
